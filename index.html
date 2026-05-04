@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lakshay Agarwal — Mechanical Engineer, M.Tech (Mechanical Design) at IIT Delhi. Portfolio of design, CAD, FEA, and research projects." />
+  <title>Lakshay Agarwal — Mechanical Design Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="brand">LA<span>.</span></a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <!-- Hook for future three.js canvas -->
+      <div id="hero-canvas" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <p class="eyebrow">Mechanical Design · IIT Delhi</p>
+        <h1>Lakshay Agarwal</h1>
+        <p class="tagline">
+          Driven by curiosity. Motivated towards perfection. Seeking mastery.
+        </p>
+        <p class="lede">
+          I turn ideas into real, working things — from assistive devices and
+          consumer products to research into materials and mechanisms.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">See projects</a>
+          <a class="btn ghost" href="mailto:lakshay.agrwl@gmail.com">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <h2>About</h2>
+      <div class="prose">
+        <p>
+          I'm a Mechanical Engineer pursuing my M.Tech in Mechanical Design at
+          <strong>IIT Delhi</strong>. I'm passionate about applying design
+          skills to solve real-world problems — building products that are
+          practical, thoughtful, and useful.
+        </p>
+        <p>
+          I've worked across CAD and FEA, prototyping, biomechanics research,
+          and even graphic and UI/UX design during my Bachelor's. I co-founded
+          a technical club that ran district-level hackathons and workshops to
+          spark engineering enthusiasm in students.
+        </p>
+        <p>
+          I'm always open to interesting work — if you've got something
+          exciting, hit me up.
+        </p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Design &amp; CAD</h3>
+          <p><strong>SolidWorks</strong>, CATIA, Fusion 360, Creo, Autodesk Inventor, AutoCAD, GD&amp;T, Technical Drawings</p>
+        </div>
+        <div class="skill-card">
+          <h3>Analysis &amp; Simulation</h3>
+          <p><strong>ANSYS Workbench</strong>, ABAQUS CAE, Inventor Nastran, Simulink, OpenSim</p>
+        </div>
+        <div class="skill-card">
+          <h3>Product Development</h3>
+          <p>Concept generation, mechanism design, DFM, rapid prototyping, user-focused research</p>
+        </div>
+        <div class="skill-card">
+          <h3>Programming &amp; Tools</h3>
+          <p><strong>Python</strong>, MATLAB, ML fundamentals, OpenCV</p>
+        </div>
+        <div class="skill-card">
+          <h3>Research</h3>
+          <p>Biomechanics, material research, experimental analysis, technical documentation</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <div class="projects">
+
+        <article class="project">
+          <header>
+            <h3>Automated Four-Bar Linkage Design using Neural Networks</h3>
+            <span class="year">2026</span>
+          </header>
+          <ul>
+            <li>Built a Python ML pipeline that predicts four-bar linkage dimensions from user-drawn coupler paths.</li>
+            <li>Image-processing workflow in OpenCV to convert hand-drawn paths into trajectory data for the network.</li>
+            <li>Synthetic training datasets generated via forward kinematics of valid random linkages.</li>
+            <li>Combines mechanism design with AI-driven inverse design for intuitive conceptual synthesis.</li>
+          </ul>
+          <a class="link" href="https://github.com/LakshayAga/Automated-design-of-four-bar-linkage" target="_blank" rel="noopener">View on GitHub →</a>
+        </article>
+
+        <article class="project">
+          <header>
+            <h3>Spine &amp; Lower Limb Exoskeleton Design Research</h3>
+            <span class="year">2025–2026</span>
+          </header>
+          <ul>
+            <li>Researched human biomechanics, joint loading, posture, and gait for assistive device development.</li>
+            <li>Studied commercial and academic exoskeleton systems — architecture, ergonomics, performance.</li>
+            <li>Developing a custom lower-limb exoskeleton concept; analysing it in OpenSim and ANSYS Workbench.</li>
+            <li>Translating biomechanical insight into practical wearable mechanical systems.</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <header>
+            <h3>Refractory Bricks from Mining Waste</h3>
+            <span class="year">2025</span>
+          </header>
+          <ul>
+            <li>Developed sustainable refractory brick compositions using mining waste for high-temperature applications.</li>
+            <li>Designed and fabricated a custom thermal testing setup to evaluate heat resistance and material performance.</li>
+            <li>Worked on material selection, testing methodology, and industrial feasibility.</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <header>
+            <h3>SAG Web Application — UI/UX Design</h3>
+            <span class="year">2023–2024</span>
+          </header>
+          <ul>
+            <li>Led UI/UX design for a student activity web platform with intuitive workflows and clean information architecture.</li>
+            <li>Defined the design language, consistency standards, and user-flow logic across modules.</li>
+            <li>Translated user needs into functional digital experiences.</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section id="leadership" class="section">
+      <h2>Leadership</h2>
+      <article class="project">
+        <header>
+          <h3>Founder &amp; Captain — Tech Bizz Club</h3>
+          <span class="year">2022–2025</span>
+        </header>
+        <ul>
+          <li>Co-founded a student technical club in a resource-constrained engineering college to promote hands-on engineering and a problem-solving culture.</li>
+          <li>Mentored student-led projects across mechanical, electronics, and software domains.</li>
+          <li>Organised innovation challenges, design competitions, technical workshops, and high-participation engineering events.</li>
+          <li>Led cross-functional teams and ran club operations with minimal resources.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <h2>Education</h2>
+      <div class="edu">
+        <div class="edu-row">
+          <div>
+            <h3>Indian Institute of Technology Delhi</h3>
+            <p>M.Tech, Mechanical Design</p>
+          </div>
+          <div class="meta">
+            <span>2025 — Ongoing</span>
+            <span>New Delhi, India</span>
+          </div>
+        </div>
+        <div class="edu-row">
+          <div>
+            <h3>M.L.V. Textile &amp; Engineering College</h3>
+            <p>B.Tech, Mechanical Engineering</p>
+          </div>
+          <div class="meta">
+            <span>2021 — 2025</span>
+            <span>Bhilwara, Rajasthan</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <h2>Get in touch</h2>
+      <p class="prose">
+        I'm always up for interesting design problems, research collaborations,
+        or just a good conversation about engineering.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:lakshay.agrwl@gmail.com">lakshay.agrwl@gmail.com</a>
+        <a href="tel:+919783241801">+91 97832 41801</a>
+        <a href="https://linkedin.com/in/lakshayagarwal490" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/LakshayAga" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Lakshay Agarwal</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
