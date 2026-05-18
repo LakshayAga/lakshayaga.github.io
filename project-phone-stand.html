@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Ergonomic Mobile Phone Stand — Project detail, 3D model, and design process by Lakshay Agarwal." />
+  <title>Phone Stand — Lakshay Agarwal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles-project.css" />
+
+  <!-- Three.js import map — keeps inline scripts clean -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <!-- ── NAVIGATION ─────────────────────────────────────────── -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">LA<span>.</span></a>
+      <nav>
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="projects.html" class="nav-active">Projects</a>
+        <a href="index.html#leadership">Leadership</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── PROJECT HERO ─────────────────────────────────────── -->
+    <section class="pj-hero">
+      <div class="pj-hero-inner">
+        <a href="projects.html" class="back-link" id="back-to-projects">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+          Back to projects
+        </a>
+
+        <div class="pj-eyebrow">Product Design · 2024</div>
+        <h1 class="pj-title">Ergonomic Mobile<br>Phone Stand</h1>
+
+        <div class="pj-tags" role="list" aria-label="Project tags">
+          <span class="pj-tag" role="listitem">SolidWorks</span>
+          <span class="pj-tag" role="listitem">CAD</span>
+          <span class="pj-tag" role="listitem">Ergonomics</span>
+          <span class="pj-tag" role="listitem">Product Design</span>
+          <span class="pj-tag pill--complete" role="listitem">Completed</span>
+        </div>
+
+        <p class="pj-lede">
+          An adjustable desktop phone stand engineered for long-session ergonomic comfort. The design balances optimal
+          viewing angle, thermal airflow, and cable management in a compact, printable form-factor.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── OVERVIEW ─────────────────────────────────────────── -->
+    <section class="pj-section" id="overview">
+      <div class="pj-section-inner">
+        <h2 class="pj-section-label">Overview</h2>
+        <div class="pj-prose">
+          <p>
+            <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </p>
+          <p>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+            laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+          </p>
+          <p>
+            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+            dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
+            sit amet consectetur.
+          </p>
+        </div>
+
+        <!-- Quick-stat row -->
+        <div class="pj-stats" role="list" aria-label="Project statistics">
+          <div class="pj-stat" role="listitem">
+            <span class="pj-stat-value">14°</span>
+            <span class="pj-stat-label">Optimal tilt angle</span>
+          </div>
+          <div class="pj-stat" role="listitem">
+            <span class="pj-stat-value">4</span>
+            <span class="pj-stat-label">Angle presets</span>
+          </div>
+          <div class="pj-stat" role="listitem">
+            <span class="pj-stat-value">180g</span>
+            <span class="pj-stat-label">Approx. print weight</span>
+          </div>
+          <div class="pj-stat" role="listitem">
+            <span class="pj-stat-value">PLA</span>
+            <span class="pj-stat-label">Primary material</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 3D MODEL VIEWER ───────────────────────────────────── -->
+    <section class="pj-section pj-viewer-section" id="model-viewer-section" aria-label="Interactive 3D model">
+      <div class="pj-section-inner">
+        <h2 class="pj-section-label">3D Model</h2>
+        <p class="pj-viewer-subtitle">Explore the geometry — drag to rotate, scroll to zoom, right-click to pan.</p>
+      </div>
+
+      <!-- Canvas frame — full-bleed to page edges below section inner -->
+      <div class="pj-viewer-frame" id="model-viewer-container" role="img" aria-label="Interactive 3D model viewer">
+
+        <!-- Loader overlay — hidden until lazy fetch begins -->
+        <div class="pj-viewer-loader" data-loader-overlay>
+          <div class="pj-loader-ring" aria-hidden="true"></div>
+          <span class="pj-loader-pct" data-loader-pct>0%</span>
+          <span class="pj-loader-label">Loading model…</span>
+        </div>
+
+        <!-- Interaction hint badge (fades in after load) -->
+        <div class="pj-viewer-hint" id="viewer-hint" aria-hidden="true">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 8v4M12 16h.01" />
+          </svg>
+          Drag · Scroll · Right-click&nbsp;to&nbsp;pan
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DESIGN PROCESS ────────────────────────────────────── -->
+    <section class="pj-section" id="design-process">
+      <div class="pj-section-inner">
+        <h2 class="pj-section-label">Design Process</h2>
+        <div class="pj-prose">
+          <p>
+            <strong>Ut enim ad minima veniam</strong>, quis nostrum exercitationem ullam corporis suscipit laboriosam,
+            nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit
+            esse quam nihil molestiae consequatur.
+          </p>
+          <p>
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
+            atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
+            sunt in culpa qui officia deserunt mollitia.
+          </p>
+        </div>
+
+        <!-- Process steps -->
+        <ol class="pj-process-steps" aria-label="Design process steps">
+          <li class="pj-step">
+            <div class="pj-step-num" aria-hidden="true">01</div>
+            <div class="pj-step-body">
+              <h3 class="pj-step-title">Ergonomic Research</h3>
+              <p class="pj-step-desc">Reviewed ISO 9241 display guidelines and surveyed target users for posture
+                pain-points during prolonged mobile use.</p>
+            </div>
+          </li>
+          <li class="pj-step">
+            <div class="pj-step-num" aria-hidden="true">02</div>
+            <div class="pj-step-body">
+              <h3 class="pj-step-title">Concept Sketching</h3>
+              <p class="pj-step-desc">Generated 12+ initial concepts exploring folding mechanisms, material choices, and
+                angle-locking strategies.</p>
+            </div>
+          </li>
+          <li class="pj-step">
+            <div class="pj-step-num" aria-hidden="true">03</div>
+            <div class="pj-step-body">
+              <h3 class="pj-step-title">CAD Modelling — SolidWorks</h3>
+              <p class="pj-step-desc">Detailed parametric model with assembly constraints, interference checks, and
+                print-tolerance allowances built in.</p>
+            </div>
+          </li>
+          <li class="pj-step">
+            <div class="pj-step-num" aria-hidden="true">04</div>
+            <div class="pj-step-body">
+              <h3 class="pj-step-title">Prototype & Iterate</h3>
+              <p class="pj-step-desc">FDM-printed in PLA, tested across four phone form-factors, refined hinge geometry
+                across three revision cycles.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ── TECHNICAL SPECS ──────────────────────────────────── -->
+    <section class="pj-section" id="tech-specs">
+      <div class="pj-section-inner">
+        <h2 class="pj-section-label">Technical Specifications</h2>
+
+        <div class="pj-specs-table-wrap" role="region" aria-label="Technical specifications table" tabindex="0">
+          <table class="pj-specs-table" id="specs-table">
+            <thead>
+              <tr>
+                <th scope="col">Parameter</th>
+                <th scope="col">Value</th>
+                <th scope="col">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Overall dimensions</td>
+                <td>120 × 85 × 40 mm</td>
+                <td>Collapsed / transport position</td>
+              </tr>
+              <tr>
+                <td>Tilt range</td>
+                <td>5° – 75°</td>
+                <td>4 detented presets</td>
+              </tr>
+              <tr>
+                <td>Phone width range</td>
+                <td>60 – 90 mm</td>
+                <td>Spring-loaded jaw</td>
+              </tr>
+              <tr>
+                <td>Material</td>
+                <td>PLA (prototype)</td>
+                <td>ABS / PETG for production</td>
+              </tr>
+              <tr>
+                <td>Estimated print time</td>
+                <td>~4.5 h</td>
+                <td>0.2 mm layer, 20% infill</td>
+              </tr>
+              <tr>
+                <td>CAD tool</td>
+                <td>SolidWorks 2023</td>
+                <td>Parametric assembly</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ──────────────────────────────────────────────── -->
+  <footer>
+    <p>© <span id="year"></span> Lakshay Agarwal</p>
+  </footer>
+
+  <!-- Global year script -->
+  <script src="script.js"></script>
+
+  <!-- Three.js model viewer — ES module -->
+  <script type="module">
+    import { ModelViewer } from './js/model-viewer.js';
+
+    const MODEL_PATH = 'assets/models/phone_stand.glb';
+    const container  = document.getElementById('model-viewer-container');
+    const hint       = document.getElementById('viewer-hint');
+
+    if (!container) {
+      console.error('[ModelViewer] Container not found.');
+    } else {
+      const viewer = new ModelViewer(container, {
+        modelPath: MODEL_PATH,
+        bgColor: 0x0e0f12,
+        autoRotate: true,
+        autoRotateSpeed: 0.5,
+      });
+
+      // Show hint badge once loader overlay is removed from DOM
+      if (hint) {
+        new MutationObserver((_, mo) => {
+          if (!container.querySelector('[data-loader-overlay]')) {
+            setTimeout(() => hint.classList.add('pj-viewer-hint--visible'), 200);
+            mo.disconnect();
+          }
+        }).observe(container, { childList: true });
+      }
+
+      window.addEventListener('pagehide', () => viewer.destroy());
+    }
+  </script>
+
+</body>
+
+</html>

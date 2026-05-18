@@ -610,7 +610,6 @@ footer {
   display: none;
 }
 
-/* PROJECT CARD — centered text, no image */
 .project-card {
   position: relative;
   flex: 0 0 auto;
@@ -629,6 +628,26 @@ footer {
   transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
   text-decoration: none;
   color: inherit;
+  overflow: hidden;
+}
+
+/* Dot grid inside each card */
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.13) 1.5px, transparent 1.5px);
+  background-size: 40px 40px;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Keep card content above the dot layer */
+.project-card>* {
+  position: relative;
+  z-index: 1;
 }
 
 .project-card:hover {

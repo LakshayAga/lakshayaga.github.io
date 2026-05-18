@@ -1,0 +1,425 @@
+/* ================================================================
+   styles-project.css
+   Styles for individual project detail pages (project-*.html)
+   ================================================================ */
+
+/* ── SUBTLE DOT GRID — full page background ──────────────────────
+   Applied via body so it covers the entire project detail page.
+   The gradient creates tiny dots at each grid intersection.
+   ================================================================ */
+
+body {
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.11) 2px, transparent 2px);
+  background-size: 48px 48px;
+  background-attachment: fixed;
+}
+
+/* ── PROJECT HERO ─────────────────────────────────────────────── */
+
+.pj-hero {
+  border-top: 1px solid var(--border);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.pj-hero-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.pj-eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.pj-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+
+.pj-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.pj-tag {
+  display: inline-block;
+  padding: 0.28rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+  background: var(--bg-soft);
+}
+
+/* Reuse the existing pill colour classes for the status tag */
+.pj-tags .pill--complete {
+  position: static;
+  /* override the absolute positioning from pills */
+  font-size: 0.75rem;
+  padding: 0.28rem 0.7rem;
+}
+
+.pj-lede {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 620px;
+  line-height: 1.75;
+}
+
+/* ── GENERIC SECTION WRAPPER ──────────────────────────────────── */
+
+.pj-section {
+  border-top: 1px solid var(--border);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.pj-section-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.pj-section-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  margin-bottom: 1.75rem;
+}
+
+/* ── PROSE ────────────────────────────────────────────────────── */
+
+.pj-prose {
+  max-width: 680px;
+  font-size: 1.0rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.pj-prose p {
+  margin-bottom: 1.25rem;
+}
+
+.pj-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.pj-prose strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ── STATS ROW ────────────────────────────────────────────────── */
+
+.pj-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 3rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.pj-stat {
+  flex: 1 1 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.5rem 1.75rem;
+  border-right: 1px solid var(--border);
+  background: var(--bg-soft);
+  transition: background 0.2s;
+}
+
+.pj-stat:last-child {
+  border-right: none;
+}
+
+.pj-stat:hover {
+  background: var(--surface);
+}
+
+.pj-stat-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.pj-stat-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* ── 3D VIEWER SECTION ────────────────────────────────────────── */
+
+.pj-viewer-section {
+  /* No additional max-width on this section — the frame breaks out */
+  padding-bottom: 0;
+}
+
+.pj-viewer-subtitle {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-top: -0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.pj-viewer-frame {
+  position: relative;
+  width: 100%;
+  /* Taller on desktop, shorter on mobile */
+  height: clamp(360px, 68vh, 700px);
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  cursor: grab;
+}
+
+.pj-viewer-frame:active {
+  cursor: grabbing;
+}
+
+/* Three.js canvas fills the frame */
+.pj-viewer-frame canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ── Loader overlay ── */
+
+.pj-viewer-loader {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: var(--bg);
+  transition: opacity 0.5s ease;
+}
+
+.pj-loader-ring {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.pj-loader-pct {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.pj-loader-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+/* ── Interaction hint badge (bottom-left of canvas) ── */
+
+.pj-viewer-hint {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: rgba(14, 15, 18, 0.72);
+  backdrop-filter: blur(8px);
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+  /* Hidden until model loads */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  white-space: nowrap;
+}
+
+.pj-viewer-hint--visible {
+  opacity: 1;
+}
+
+/* ── DESIGN PROCESS STEPS ─────────────────────────────────────── */
+
+.pj-process-steps {
+  list-style: none;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.pj-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.75rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-soft);
+  transition: background 0.2s;
+}
+
+.pj-step:last-child {
+  border-bottom: none;
+}
+
+.pj-step:hover {
+  background: var(--surface);
+}
+
+.pj-step-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  min-width: 1.75rem;
+  padding-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.pj-step-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+
+.pj-step-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* ── SPECS TABLE ──────────────────────────────────────────────── */
+
+.pj-specs-table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.pj-specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.pj-specs-table th {
+  text-align: left;
+  padding: 0.85rem 1.25rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-soft);
+}
+
+.pj-specs-table td {
+  padding: 0.85rem 1.25rem;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.pj-specs-table td:first-child {
+  font-weight: 500;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.pj-specs-table td:last-child {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.pj-specs-table tr:last-child td {
+  border-bottom: none;
+}
+
+.pj-specs-table tbody tr {
+  transition: background 0.15s;
+}
+
+.pj-specs-table tbody tr:hover {
+  background: var(--bg-soft);
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .pj-title {
+    font-size: clamp(1.8rem, 8vw, 2.6rem);
+  }
+
+  .pj-stat {
+    padding: 1.25rem;
+  }
+
+  .pj-stat-value {
+    font-size: 1.5rem;
+  }
+
+  .pj-viewer-frame {
+    height: 52vh;
+    min-height: 300px;
+  }
+
+  .pj-step {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
