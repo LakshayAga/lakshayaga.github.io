@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,9 +12,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
     rel="stylesheet" />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="styles-project.css" />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../styles-project.css" />
 
   <!-- Three.js import map — keeps inline scripts clean -->
   <script type="importmap">
@@ -32,13 +32,13 @@
   <!-- ── NAVIGATION ─────────────────────────────────────────── -->
   <header class="nav">
     <div class="nav-inner">
-      <a href="index.html" class="brand">LA<span>.</span></a>
+      <a href="../index.html" class="brand">LA<span>.</span></a>
       <nav>
-        <a href="index.html#about">About</a>
-        <a href="index.html#skills">Skills</a>
-        <a href="projects.html" class="nav-active">Projects</a>
-        <a href="index.html#leadership">Leadership</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../projects.html" class="nav-active">Projects</a>
+        <a href="../index.html#leadership">Leadership</a>
+        <a href="../index.html#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -48,7 +48,7 @@
     <!-- ── PROJECT HERO ─────────────────────────────────────── -->
     <section class="pj-hero">
       <div class="pj-hero-inner">
-        <a href="projects.html" class="back-link" id="back-to-projects">
+        <a href="../projects.html" class="back-link" id="back-to-projects">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
             <path d="m15 18-6-6 6-6" />
@@ -261,13 +261,13 @@
   </footer>
 
   <!-- Global year script -->
-  <script src="script.js"></script>
+  <script src="../script.js"></script>
 
   <!-- Three.js model viewer — ES module -->
   <script type="module">
-    import { ModelViewer } from './js/model-viewer.js';
+    import { ModelViewer } from '../js/model-viewer.js';
 
-    const MODEL_PATH = 'assets/models/phone_stand.glb';
+    const MODEL_PATH = '../assets/models/phone_stand.glb';
     const container  = document.getElementById('model-viewer-container');
     const hint       = document.getElementById('viewer-hint');
 
@@ -298,3 +298,4 @@
 </body>
 
 </html>
+
