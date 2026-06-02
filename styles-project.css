@@ -398,6 +398,291 @@ body {
   background: var(--bg-soft);
 }
 
+/* ── MECHANISM PANELS ─────────────────────────────────────────── */
+
+.pj-mech-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.pj-mech-panel {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: background 0.2s;
+}
+
+.pj-mech-panel:hover {
+  background: var(--surface);
+}
+
+/* Flipped variant — image on left, text on right */
+.pj-mech-panel--flip {
+  flex-direction: row-reverse;
+}
+
+.pj-mech-panel--flip .pj-mech-body {
+  border-right: none;
+  border-left: 1px solid var(--border);
+}
+
+/* Text side */
+.pj-mech-body {
+  flex: 0 0 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: 2rem 1.75rem;
+  border-right: 1px solid var(--border);
+}
+
+.pj-mech-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.pj-mech-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.pj-mech-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.pj-mech-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.75;
+  margin: 0;
+}
+
+.pj-mech-desc strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.pj-mech-details {
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.pj-mech-details li {
+  font-size: 0.82rem;
+  color: var(--muted);
+  padding-left: 1.1rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.pj-mech-details li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.75rem;
+  top: 0.05em;
+}
+
+/* Image side */
+.pj-mech-figure {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.pj-mech-figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex: 1;
+}
+
+/* Placeholder shown until real image is added */
+.pj-mech-img-placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 260px;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+}
+
+.pj-mech-img-spec {
+  font-size: 0.72rem;
+  color: var(--accent);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+}
+
+.pj-mech-caption {
+  padding: 0.6rem 1rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.4;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 760px) {
+  .pj-mech-panel {
+    flex-direction: column;
+  }
+
+  .pj-mech-body {
+    flex: none;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pj-mech-img-placeholder {
+    min-height: 200px;
+  }
+}
+
+
+
+/* ── HIGHLIGHT STRIP (3 horizontal cards) ─────────────────────── */
+
+.pj-highlight-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.pj-highlight-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.75rem 1.5rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  transition: background 0.2s, border-left-color 0.2s;
+}
+
+.pj-highlight-card:hover {
+  background: var(--surface);
+  border-left-color: var(--accent);
+}
+
+.pj-highlight-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.pj-highlight-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.0rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.pj-highlight-desc {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .pj-highlight-strip {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* ── KEY FEATURES GRID ────────────────────────────────────────── */
+
+.pj-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  margin-top: 3rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.pj-feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.75rem 1.75rem;
+  background: var(--bg-soft);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+
+/* remove redundant right/bottom borders on grid edges */
+.pj-feature-card:nth-child(2n) {
+  border-right: none;
+}
+
+.pj-feature-card:nth-last-child(-n+2) {
+  border-bottom: none;
+}
+
+.pj-feature-card:hover {
+  background: var(--surface);
+}
+
+.pj-feature-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.pj-feature-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.pj-feature-desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
 /* ── RESPONSIVE ───────────────────────────────────────────────── */
 
 @media (max-width: 640px) {
@@ -422,4 +707,87 @@ body {
     flex-direction: column;
     gap: 0.5rem;
   }
+
+  .pj-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* In single-column layout every card has a bottom border except the last */
+  .pj-feature-card {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pj-feature-card:last-child {
+    border-bottom: none;
+  }
+}
+
+/* ── GALLERY ───────────────────────────────────────────────────── */
+
+.pj-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+/* Each grid cell — real image link */
+a.pj-gallery-item {
+  display: block;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  cursor: zoom-in;
+  outline-offset: 3px;
+}
+
+a.pj-gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease, opacity 0.25s;
+}
+
+a.pj-gallery-item:hover img {
+  transform: scale(1.05);
+  opacity: 0.88;
+}
+
+/* Zoom icon overlay on hover */
+a.pj-gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 15, 18, 0) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3Cline x1='11' y1='8' x2='11' y2='14'/%3E%3Cline x1='8' y1='11' x2='14' y2='11'/%3E%3C/svg%3E") center / 22px no-repeat;
+  opacity: 0;
+  transition: opacity 0.25s, background-color 0.25s;
+  border-radius: 8px;
+}
+
+a.pj-gallery-item:hover::after {
+  background-color: rgba(14, 15, 18, 0.35);
+  opacity: 1;
+}
+
+/* Placeholder tile */
+.pj-gallery-placeholder {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 1px dashed var(--border);
+  background: var(--bg-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  opacity: 0.55;
+  user-select: none;
 }

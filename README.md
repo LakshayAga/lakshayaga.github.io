@@ -10,18 +10,22 @@ Personal portfolio website showcasing engineering, product design, and research 
 
 ```
 portfolio/
-├── index.html              # Landing page (hero, about, skills, projects preview, leadership, contact)
+├── index.html              # Structural skeleton — all text loaded dynamically from data/
 ├── projects.html           # Full projects listing, categorised by domain
-├── script.js               # Shared utilities (copyright year, etc.)
+├── script.js               # Shared year utility (used by project detail pages)
 ├── styles.css              # Global design system & shared components
 ├── styles-project.css      # Styles specific to individual project detail pages
 │
-├── projects/               # Individual project detail pages
-│   ├── phone-stand.html    # Ergonomic Phone Stand — PoC with 3D model viewer
-│   └── project.html        # Generic "coming soon" page for unbuilt projects
+├── data/
+│   └── site-content.json   # ← Edit this file to update all landing page content
 │
 ├── js/
-│   └── model-viewer.js     # Reusable Three.js ModelViewer class
+│   ├── home-loader.js      # Fetches site-content.json and populates index.html
+│   └── model-viewer.js     # Reusable Three.js GLB model viewer class
+│
+├── projects/               # Individual project detail pages
+│   ├── phone-stand.html    # Ergonomic Phone Stand — custom layout with 3D model viewer
+│   └── project.html        # "Coming soon" placeholder for unbuilt project pages
 │
 └── assets/
     ├── favicon.svg
@@ -33,6 +37,26 @@ portfolio/
 
 ---
 
+## Editing Landing Page Content
+
+All visible text on the home page is controlled from a **single file**: [`data/site-content.json`](data/site-content.json).
+
+To update any content on the homepage, open that file and edit the relevant section. **No HTML or JavaScript knowledge is needed.**
+
+| Section in JSON | What it controls on the page |
+|---|---|
+| `hero` | Name, tagline, intro paragraph, button labels |
+| `about` | The About section paragraphs |
+| `skills` | The skill category cards (title + tools list) |
+| `projects` | Project entries shown in the Projects preview |
+| `leadership` | Leadership experience entries |
+| `education` | Education history rows (institution, degree, dates) |
+| `contact` | Intro text and contact link list (email, phone, LinkedIn, GitHub) |
+
+> **Note:** Because the page loads content via a network request, you must use a local web server to preview changes. Opening `index.html` directly via `file://` will show empty sections. See the **Development** section below.
+
+---
+
 ## Tech Stack
 
 | Concern | Technology |
@@ -40,6 +64,7 @@ portfolio/
 | Markup | HTML5 (semantic) |
 | Styling | Vanilla CSS (custom properties, no framework) |
 | Scripting | Vanilla JavaScript (ES Modules) |
+| Content | JSON (`data/site-content.json`) loaded at runtime via `fetch` |
 | 3D Rendering | [Three.js r165](https://threejs.org/) via CDN import map |
 | 3D Controls | Three.js OrbitControls (drag, zoom, pan) |
 | Model Format | GLTF / GLB with optional Draco compression |
@@ -77,11 +102,7 @@ window.addEventListener('pagehide', () => viewer.destroy());
 npx @gltf-transform/cli optimize assets/models/your_model.glb assets/models/your_model.glb --compress draco
 ```
 
-> **Note:** Three.js uses `fetch` internally to load GLB files. Opening HTML files directly via `file://` will block the request. Use a local HTTP server during development:
-> ```bash
-> python -m http.server 8080
-> ```
-> Then open `http://localhost:8080`.
+> **Note:** Three.js uses `fetch` internally to load GLB files. Opening HTML files directly via `file://` will block the request. Use a local HTTP server during development (see below).
 
 ---
 
@@ -89,8 +110,16 @@ npx @gltf-transform/cli optimize assets/models/your_model.glb assets/models/your
 
 No build step required. Edit files directly and serve with any static HTTP server.
 
+**Quick start:**
+```bash
+python -m http.server 8080
+```
+Then open `http://localhost:8080` in your browser.
+
+> This is required for both the 3D model viewer and the dynamic content system — both use `fetch`, which does not work with `file://` URLs.
+
 **Recommended workflow (VS Code):**
-Install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension → right-click any HTML file → *Open with Live Server*. Auto-reloads on every save.
+Install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension → right-click `index.html` → *Open with Live Server*. Auto-reloads on every save, and serves over HTTP automatically.
 
 ---
 
@@ -98,19 +127,13 @@ Install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ri
 
 | Project | Category | Status | Page |
 |---|---|---|---|
-| Design of Detachable Cannula | Engineering | In Progress | Coming soon |
 | Automated Four-Bar Linkage (ML) | Engineering | Completed | Coming soon |
-| Lower Limb Exoskeleton | Engineering | Design Phase | Coming soon |
-| Spine Exoskeleton Research | Engineering | Completed | Coming soon |
+| Exoskeleton Design: Lower Limb & Spine Research | Engineering | Design Phase | Coming soon |
+| Development of Refractory Bricks using Mining Waste | Research | Completed | Coming soon |
+| SAG Web Application Design | Graphic & UI | Completed | Coming soon |
 | Ergonomic Mobile Phone Stand | Product Design | Completed | `projects/phone-stand.html` |
 | Foldable Ergonomic Laptop Stand | Product Design | Design Phase | Coming soon |
-| Terrain Representation | Product Design | Completed | Coming soon |
-| Custom Vernier Caliper | Product Design | Completed | Coming soon |
-| Development of Refractory Bricks | Research | Completed | Coming soon |
-| SAG Web Application Design | Graphic & UI | Completed | Coming soon |
-| CreateX 2024 Event Website | Graphic & UI | Completed | Coming soon |
-| OpenHack 2024 Event Website | Graphic & UI | Completed | Coming soon |
 
 ---
 
-*Built with AI assistance (Google Deepmind Antigravity)*
+*Built with AI assistance (Google DeepMind Antigravity)*

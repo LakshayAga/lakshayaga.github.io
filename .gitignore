@@ -1,3 +1,6 @@
 # Resume / CV files
 CV-3.pdf
 *.pdf
+
+# Execution Plans
+exec_plan.md

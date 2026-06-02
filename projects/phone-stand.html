@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Ergonomic Mobile Phone Stand — Project detail, 3D model, and design process by Lakshay Agarwal." />
+    content="Ergonomic Mobile Phone Stand — A height- and tilt-adjustable, dual-orientation desktop stand printed in PLA. Design process, 3D model, and engineering details by Lakshay Agarwal." />
   <title>Phone Stand — Lakshay Agarwal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,6 +15,9 @@
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="../styles.css" />
   <link rel="stylesheet" href="../styles-project.css" />
+
+  <!-- GLightbox — zero-dependency lightbox -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css" />
 
   <!-- Three.js import map — keeps inline scripts clean -->
   <script type="importmap">
@@ -62,14 +65,16 @@
         <div class="pj-tags" role="list" aria-label="Project tags">
           <span class="pj-tag" role="listitem">SolidWorks</span>
           <span class="pj-tag" role="listitem">CAD</span>
+          <span class="pj-tag" role="listitem">FDM / PLA</span>
+          <span class="pj-tag" role="listitem">Mechanism Design</span>
           <span class="pj-tag" role="listitem">Ergonomics</span>
-          <span class="pj-tag" role="listitem">Product Design</span>
           <span class="pj-tag pill--complete" role="listitem">Completed</span>
         </div>
 
         <p class="pj-lede">
-          An adjustable desktop phone stand engineered for long-session ergonomic comfort. The design balances optimal
-          viewing angle, thermal airflow, and cable management in a compact, printable form-factor.
+          A desk stand engineered around personal preference — height, tilt range, and cable clearance were all
+          self-specified, then delivered through printable mechanisms: a ratchet-balanced parallel linkage, a
+          lead-screw tilt actuator, and a cradle shaped for both portrait and landscape without any moving parts.
         </p>
       </div>
     </section>
@@ -80,39 +85,71 @@
         <h2 class="pj-section-label">Overview</h2>
         <div class="pj-prose">
           <p>
-            <strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
-          <p>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
-          </p>
-          <p>
-            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
-            dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
-            sit amet consectetur.
+            All requirements were <strong>self-specified</strong> — tilt and height ranges were chosen to cover the
+            full gamut of personal working postures, cable bend radius at height was considered to avoid stressing the
+            charging lead, and the cradle geometry was sized around a real device. Every mechanism had to be
+            FDM-printable in PLA with no external hardware including 3d printed fasteners.
           </p>
         </div>
 
-        <!-- Quick-stat row -->
+        <!-- ── THREE HIGHLIGHT CARDS ── -->
+        <div class="pj-highlight-strip" role="list" aria-label="Core design features">
+
+          <div class="pj-highlight-card" role="listitem" id="feature-height">
+            <div class="pj-highlight-icon" aria-hidden="true">
+              <!-- Up-down arrows -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M7 7l5-5 5 5M7 17l5 5 5-5" />
+              </svg>
+            </div>
+            <h3 class="pj-highlight-title">Height Adjustable</h3>
+            <p class="pj-highlight-desc">Scissor-style parallel linkage keeps the platform level at any height.
+              A ratchet mechanism locks the position under load - compliant spring in the ratchet mechanism.</p>
+          </div>
+
+          <div class="pj-highlight-card" role="listitem" id="feature-tilt">
+            <div class="pj-highlight-icon" aria-hidden="true">
+              <!-- Rotation / tilt -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 14a8 8 0 0 1 13.66-5.66" />
+                <path d="M20 10a8 8 0 0 1-13.66 5.66" />
+                <path d="M17 7l1.27 2.73L21 11" />
+                <path d="M7 17l-1.27-2.73L3 13" />
+              </svg>
+            </div>
+            <h3 class="pj-highlight-title">Tilt Adjustable</h3>
+            <p class="pj-highlight-desc">A captive-nut lead screw gives continuous, fine-grained tilt control.
+              Range and neutral angle were set to comfortable personal viewing positions.</p>
+          </div>
+
+          <div class="pj-highlight-card" role="listitem" id="feature-orientation">
+            <div class="pj-highlight-icon" aria-hidden="true">
+              <!-- Portrait + landscape phone outlines -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="7" y="2" width="6" height="10" rx="1.5" />
+                <rect x="2" y="14" width="10" height="6" rx="1.5" />
+              </svg>
+            </div>
+            <h3 class="pj-highlight-title">Portrait &amp; Landscape</h3>
+            <p class="pj-highlight-desc">The cradle is <em>shaped</em> to seat the phone stably in either
+              orientation — no rotating mechanism or swappable parts. A bottom-centre channel clears the
+              charging lead in portrait mode.</p>
+          </div>
+
+        </div>
+
+        <!-- Minimal stat row -->
         <div class="pj-stats" role="list" aria-label="Project statistics">
           <div class="pj-stat" role="listitem">
-            <span class="pj-stat-value">14°</span>
-            <span class="pj-stat-label">Optimal tilt angle</span>
-          </div>
-          <div class="pj-stat" role="listitem">
-            <span class="pj-stat-value">4</span>
-            <span class="pj-stat-label">Angle presets</span>
-          </div>
-          <div class="pj-stat" role="listitem">
-            <span class="pj-stat-value">180g</span>
-            <span class="pj-stat-label">Approx. print weight</span>
+            <span class="pj-stat-value">3</span>
+            <span class="pj-stat-label">Physical prototypes</span>
           </div>
           <div class="pj-stat" role="listitem">
             <span class="pj-stat-value">PLA</span>
-            <span class="pj-stat-label">Primary material</span>
+            <span class="pj-stat-label">Print material</span>
           </div>
         </div>
       </div>
@@ -153,14 +190,8 @@
         <h2 class="pj-section-label">Design Process</h2>
         <div class="pj-prose">
           <p>
-            <strong>Ut enim ad minima veniam</strong>, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-            nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-            esse quam nihil molestiae consequatur.
-          </p>
-          <p>
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
-            atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
-            sunt in culpa qui officia deserunt mollitia.
+            Three physical prototypes were made, each validating a mechanism's function, while refining
+            the tolerance as observed per iteration.
           </p>
         </div>
 
@@ -169,40 +200,191 @@
           <li class="pj-step">
             <div class="pj-step-num" aria-hidden="true">01</div>
             <div class="pj-step-body">
-              <h3 class="pj-step-title">Ergonomic Research</h3>
-              <p class="pj-step-desc">Reviewed ISO 9241 display guidelines and surveyed target users for posture
-                pain-points during prolonged mobile use.</p>
+              <h3 class="pj-step-title">Self-Specified Requirements</h3>
+              <p class="pj-step-desc">Requirements were defined from personal use: tilt and height ranges were
+                chosen to cover comfortable viewing angles across sitting and standing postures; cable bend radius
+                at maximum height was factored in to avoid stressing the connector; cradle width was sized to a
+                real device. Constraint: all mechanisms printable in PLA with no external hardware.</p>
             </div>
           </li>
           <li class="pj-step">
             <div class="pj-step-num" aria-hidden="true">02</div>
             <div class="pj-step-body">
-              <h3 class="pj-step-title">Concept Sketching</h3>
-              <p class="pj-step-desc">Generated 12+ initial concepts exploring folding mechanisms, material choices, and
-                angle-locking strategies.</p>
+              <h3 class="pj-step-title">Mechanism Selection</h3>
+              <p class="pj-step-desc">Evaluated telescoping columns, four-bar linkages, and scissor linkages for
+                height. Chose a <strong>parallel linkage</strong> for its level-keeping property. Selected a
+                <strong>ratchet latch</strong> for reliable load-bearing. Adopted a
+                <strong>captive-nut lead screw</strong> for continuous, fine tilt control.
+              </p>
             </div>
           </li>
           <li class="pj-step">
             <div class="pj-step-num" aria-hidden="true">03</div>
             <div class="pj-step-body">
               <h3 class="pj-step-title">CAD Modelling — SolidWorks</h3>
-              <p class="pj-step-desc">Detailed parametric model with assembly constraints, interference checks, and
-                print-tolerance allowances built in.</p>
+              <p class="pj-step-desc">Built a fully parametric SolidWorks assembly with mates constraining the linkage
+                geometry and a motion study verifying tilt range. FDM tolerances (0.3 mm clearance on pivot pins,
+                0.2 mm on the ratchet teeth) were applied globally via design table. Cable channel geometry was
+                validated against the measured lead dimensions of a USB-C cable.</p>
             </div>
           </li>
           <li class="pj-step">
             <div class="pj-step-num" aria-hidden="true">04</div>
             <div class="pj-step-body">
-              <h3 class="pj-step-title">Prototype & Iterate</h3>
-              <p class="pj-step-desc">FDM-printed in PLA, tested across four phone form-factors, refined hinge geometry
-                across three revision cycles.</p>
+              <h3 class="pj-step-title">Prototype I — Proof of Concept</h3>
+              <p class="pj-step-desc">First print validated the linkage kinematics and ratchet engagement. Issues
+                found: ratchet pawl too stiff (wall too thick), pivot pins required a mallet to seat — clearances
+                tightened too aggressively at 0.15 mm. Design updated with 0.3 mm clearances and a thinner pawl
+                arm.</p>
+            </div>
+          </li>
+          <li class="pj-step">
+            <div class="pj-step-num" aria-hidden="true">05</div>
+            <div class="pj-step-body">
+              <h3 class="pj-step-title">Prototype II — Mechanism Refinement</h3>
+              <p class="pj-step-desc">Ratchet and pivots now assembled by hand. New issue: screw actuator for tilt
+                had thread slippage under load — the captive nut was pulling out of its pocket. Added a secondary
+                retention tab around the nut pocket. Also widened the cable channel after testing with a braided
+                USB-C lead that was thicker than anticipated.</p>
+            </div>
+          </li>
+          <li class="pj-step">
+            <div class="pj-step-num" aria-hidden="true">06</div>
+            <div class="pj-step-body">
+              <h3 class="pj-step-title">Prototype III — Final Build</h3>
+              <p class="pj-step-desc">All mechanisms operate smoothly and reliably. The stand assembles without
+                tools, adjusts single-handed in both axes, and accepts the phone in portrait and landscape with
+                a stable, rattle-free hold. The cable channel clears a USB-C lead in portrait mode without
+                stressing the connector.</p>
             </div>
           </li>
         </ol>
       </div>
     </section>
 
+    <!-- ── MECHANISMS ─────────────────────────────────────────── -->
+    <section class="pj-section" id="mechanisms">
+      <div class="pj-section-inner">
+        <h2 class="pj-section-label">Mechanisms</h2>
+
+        <div class="pj-mech-grid">
+
+          <!-- Ratchet / height lock -->
+          <div class="pj-mech-panel" id="mech-ratchet">
+
+            <div class="pj-mech-body">
+              <div class="pj-mech-header">
+                <div class="pj-mech-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v20M7 7l5-5 5 5M7 17l5 5 5-5" />
+                  </svg>
+                </div>
+                <h3 class="pj-mech-title">Ratchet Height Lock</h3>
+              </div>
+              <p class="pj-mech-desc">
+                The ratchet teeth are cut into a <strong>curved surface</strong> that follows the arc of the linkage's
+                rotation — so each tooth engages squarely regardless of height position. A
+                <strong>compliant lever</strong> (a thin printed arm that flexes like a spring) acts as the pawl,
+                clicking into successive teeth as the linkage rises. No metal spring is needed; the lever's
+                stiffness is entirely a function of wall thickness and arm length.
+              </p>
+              <p class="pj-mech-desc">
+                Getting the lever right took the most iteration of any part. Too thick and it would not flex enough
+                to ride over teeth during adjustment; too thin and it would not hold position under the phone's
+                weight. Tooth size was iterated in parallel — coarser teeth gave more secure locking but coarser
+                height increments; the final geometry balances both.
+              </p>
+              <ul class="pj-mech-details" aria-label="Ratchet design details">
+                <li>Teeth on curved arc surface — consistent engagement at all heights</li>
+                <li>Compliant lever pawl — wall thickness iterated through rapid printing cycles</li>
+                <li>Tooth size tuned to balance height resolution vs. locking force</li>
+                <li>No external spring — all elasticity from printed geometry</li>
+              </ul>
+            </div>
+
+            <figure class="pj-mech-figure">
+              <!-- Replace src with your image. Recommended: 800×600 px (4:3), JPEG/WebP -->
+              <!-- img src="../assets/images/ratchet-closeup.jpg" alt="Close-up of the ratchet teeth and compliant lever" -->
+              <div class="pj-mech-img-placeholder" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <path d="m21 15-5-5L5 21" />
+                </svg>
+                <span>Ratchet close-up</span>
+                <span class="pj-mech-img-spec">800 × 600 px · 4:3</span>
+              </div>
+              <figcaption class="pj-mech-caption">Curved ratchet teeth and compliant lever pawl</figcaption>
+            </figure>
+
+          </div>
+
+          <!-- Tilt screw -->
+          <div class="pj-mech-panel pj-mech-panel--flip" id="mech-tilt">
+
+            <div class="pj-mech-body">
+              <div class="pj-mech-header">
+                <div class="pj-mech-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                  </svg>
+                </div>
+                <h3 class="pj-mech-title">Screw-Type Tilt Actuator</h3>
+              </div>
+              <p class="pj-mech-desc">
+                The tilt screw is entirely custom — thread profile, pitch, and nut pocket were all designed from
+                scratch. The thread uses <strong>45° teeth</strong>, and the nut's mating slot is cut at the same
+                angle, giving a symmetric load-sharing contact that a square thread would not provide on a printed
+                surface.
+              </p>
+              <p class="pj-mech-desc">
+                The screw's axis runs <strong>parallel to the tilt axis</strong>. Rotating the screw advances a
+                link perpendicular to that axis; the link pushes the cradle arm, converting linear travel into
+                rotational tilt. This perpendicular-motion arrangement keeps the actuator compact and clear of
+                the phone's footprint.
+              </p>
+              <p class="pj-mech-desc">
+                Because the thread is 3D-printed, reliability is an acknowledged limitation — surface roughness
+                and layer lines introduce variability in engagement. The mechanism works consistently in practice
+                but is not as robust as a machined thread, and remains an area for future refinement.
+              </p>
+              <ul class="pj-mech-details" aria-label="Tilt screw design details">
+                <li>Custom thread — 45° tooth profile for symmetric printed-surface contact</li>
+                <li>Screw axis parallel to tilt axis; link motion is perpendicular</li>
+                <li>Rotation → linear push → cradle rotation (no rack needed)</li>
+                <li>Reliability limited by FDM surface finish — functional, not production-grade</li>
+              </ul>
+            </div>
+
+            <figure class="pj-mech-figure">
+              <!-- Replace src with your image. Recommended: 800×600 px (4:3), JPEG/WebP -->
+              <!-- img src="../assets/images/tilt-screw-closeup.jpg" alt="Close-up of the custom 45° tilt screw and captive nut" -->
+              <div class="pj-mech-img-placeholder" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <path d="m21 15-5-5L5 21" />
+                </svg>
+                <span>Tilt screw close-up</span>
+                <span class="pj-mech-img-spec">800 × 600 px · 4:3</span>
+              </div>
+              <figcaption class="pj-mech-caption">Custom 45° screw thread and captive nut pocket</figcaption>
+            </figure>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
     <!-- ── TECHNICAL SPECS ──────────────────────────────────── -->
+
     <section class="pj-section" id="tech-specs">
       <div class="pj-section-inner">
         <h2 class="pj-section-label">Technical Specifications</h2>
@@ -218,37 +400,118 @@
             </thead>
             <tbody>
               <tr>
-                <td>Overall dimensions</td>
-                <td>120 × 85 × 40 mm</td>
-                <td>Collapsed / transport position</td>
+                <td>Height adjustment</td>
+                <td>Parallel linkage</td>
+                <td>Scissor-style; platform stays level at all heights</td>
               </tr>
               <tr>
-                <td>Tilt range</td>
-                <td>5° – 75°</td>
-                <td>4 detented presets</td>
+                <td>Height lock</td>
+                <td>Ratchet mechanism</td>
+                <td>Printed ratchet; no external spring required</td>
               </tr>
               <tr>
-                <td>Phone width range</td>
-                <td>60 – 90 mm</td>
-                <td>Spring-loaded jaw</td>
+                <td>Tilt adjustment</td>
+                <td>Screw-type actuator</td>
+                <td>Captive nut + thumbscrew; continuous range</td>
+              </tr>
+              <tr>
+                <td>Orientation</td>
+                <td>Portrait &amp; Landscape</td>
+                <td>Cradle supports both without swappable parts</td>
+              </tr>
+              <tr>
+                <td>Cable management</td>
+                <td>Bottom-centre channel</td>
+                <td>Clears USB-C lead in portrait mode</td>
               </tr>
               <tr>
                 <td>Material</td>
-                <td>PLA (prototype)</td>
-                <td>ABS / PETG for production</td>
+                <td>PLA</td>
+                <td>FDM printed; no external hardware beyond fasteners</td>
               </tr>
               <tr>
-                <td>Estimated print time</td>
-                <td>~4.5 h</td>
-                <td>0.2 mm layer, 20% infill</td>
+                <td>Physical prototypes</td>
+                <td>3 iterations</td>
+                <td>Plus several additional CAD-only design iterations</td>
               </tr>
               <tr>
                 <td>CAD tool</td>
-                <td>SolidWorks 2023</td>
-                <td>Parametric assembly</td>
+                <td>SolidWorks</td>
+                <td>Fully parametric assembly with motion study</td>
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── GALLERY ─────────────────────────────────────────────── -->
+    <section class="pj-section" id="gallery">
+      <div class="pj-section-inner">
+        <h2 class="pj-section-label">Gallery</h2>
+        <p class="pj-viewer-subtitle">Photos of the printed prototype — click any image to expand.</p>
+
+        <div class="pj-gallery-grid" role="list" aria-label="Product photo gallery">
+
+          <!--
+            To add an image:
+            1. Copy the block below, uncomment it, and fill in the paths / captions.
+            2. Place photos in assets/images/ (JPEG or WebP recommended, any size — they will crop to square in the grid).
+            3. data-title is shown as the lightbox heading; data-description is the sub-caption.
+
+            <a href="../assets/images/photo-filename.jpg"
+               class="glightbox pj-gallery-item"
+               data-gallery="phone-stand"
+               data-title="Your caption here"
+               data-description="Optional longer description"
+               role="listitem">
+              <img src="../assets/images/photo-filename.jpg"
+                   alt="Descriptive alt text"
+                   loading="lazy" />
+            </a>
+          -->
+
+          <!-- PLACEHOLDER tiles (remove each as you add real images) -->
+          <div class="pj-gallery-item pj-gallery-placeholder" role="listitem" aria-label="Image slot">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="m21 15-5-5L5 21" />
+            </svg>
+            <span>Add photo</span>
+          </div>
+
+          <div class="pj-gallery-item pj-gallery-placeholder" role="listitem" aria-label="Image slot">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="m21 15-5-5L5 21" />
+            </svg>
+            <span>Add photo</span>
+          </div>
+
+          <div class="pj-gallery-item pj-gallery-placeholder" role="listitem" aria-label="Image slot">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="m21 15-5-5L5 21" />
+            </svg>
+            <span>Add photo</span>
+          </div>
+
+          <div class="pj-gallery-item pj-gallery-placeholder" role="listitem" aria-label="Image slot">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="m21 15-5-5L5 21" />
+            </svg>
+            <span>Add photo</span>
+          </div>
+
         </div>
       </div>
     </section>
@@ -263,13 +526,24 @@
   <!-- Global year script -->
   <script src="../script.js"></script>
 
+  <!-- GLightbox -->
+  <script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js"></script>
+  <script>
+    GLightbox({
+      selector: '.glightbox',
+      touchNavigation: true,
+      loop: true,
+      zoomable: false,
+    });
+  </script>
+
   <!-- Three.js model viewer — ES module -->
   <script type="module">
     import { ModelViewer } from '../js/model-viewer.js';
 
     const MODEL_PATH = '../assets/models/phone_stand.glb';
-    const container  = document.getElementById('model-viewer-container');
-    const hint       = document.getElementById('viewer-hint');
+    const container = document.getElementById('model-viewer-container');
+    const hint = document.getElementById('viewer-hint');
 
     if (!container) {
       console.error('[ModelViewer] Container not found.');
@@ -298,4 +572,3 @@
 </body>
 
 </html>
-
