@@ -1,0 +1,165 @@
+{
+  "hero": {
+    "eyebrow": "Mechanical Design · IIT Delhi",
+    "name": "Lakshay Agarwal",
+    "tagline": "Driven by curiosity. Motivated towards perfection. Seeking mastery.",
+    "lede": "Transforming ideas into user-focused products — from assistive devices and innovative mechanical systems to engineering research and rapid prototyping.",
+    "cta": {
+      "primary": {
+        "label": "See projects",
+        "href": "#projects"
+      },
+      "secondary": {
+        "label": "Get in touch",
+        "href": "mailto:lakshay.agrwl@gmail.com"
+      }
+    }
+  },
+  "about": {
+    "paragraphs": [
+      "Mechanical Engineer and M.Tech candidate at <strong>IIT Delhi</strong> specializing in Mechanical Design. Strong understanding of transforming ideas into user-focused products through the Product Design process.",
+      "Experienced in solving practical engineering problems with a functional design mindset, spanning assistive devices, user-focused products, and innovative mechanical systems. Highly proficient in <strong>SolidWorks</strong>, <strong>ANSYS Workbench</strong>, engineering analysis, and rapid prototyping, with a focus on building efficient, practical, and impactful products.",
+      "I'm always open to interesting work — if you've got something exciting, hit me up."
+    ]
+  },
+  "skills": [
+    {
+      "title": "Design & CAD",
+      "description": "SolidWorks, CATIA, Fusion 360, Creo, Autodesk Inventor, AutoCAD, GD&T, Technical Drawings"
+    },
+    {
+      "title": "Analysis & Simulation",
+      "description": "ANSYS Workbench, ABAQUS CAE, Inventor Nastran, Simulink, OpenSim"
+    },
+    {
+      "title": "Product Development",
+      "description": "Concept generation, mechanism design, DFM, rapid prototyping, user-focused research"
+    },
+    {
+      "title": "Programming & Computational Tools",
+      "description": "Python, MATLAB, Applied Machine Learning, OpenCV"
+    },
+    {
+      "title": "Research & Engineering Applications",
+      "description": "Robotics, Biomechanics, Material Research, Experimental Analysis, Technical Documentation"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Automated Four-Bar Linkage Design using Neural Networks",
+      "year": "2026",
+      "bullets": [
+        "Developed a machine learning pipeline in Python to predict four-bar linkage dimensions from user-drawn coupler paths.",
+        "Built an image-processing workflow using OpenCV to convert hand-drawn paths into neural-network readable trajectory data.",
+        "Generated synthetic training datasets through forward kinematics of random valid linkage parameters for supervised learning."
+      ],
+      "link": {
+        "href": "https://github.com/LakshayAga/Automated-design-of-four-bar-linkage",
+        "label": "View on GitHub →",
+        "external": true
+      }
+    },
+    {
+      "title": "Exoskeleton Design: Lower Limb Development & Spine Biomechanical Research",
+      "year": "2025–2026",
+      "bullets": [
+        "Researched human gait and joint loading alongside existing exoskeleton systems to establish assistive device design requirements.",
+        "Studied spinal loading and posture mechanics, with early-stage concept exploration for a spine assistive device.",
+        "Evaluated four joint actuation concepts against wearability, torque, and control requirements, selecting direct joint actuation.",
+        "Performed musculoskeletal simulation and optimal control analysis in OpenSim to validate actuator sizing and produce a preliminary CAD model."
+      ],
+      "link": null
+    },
+    {
+      "title": "Self-Initiated Ergonomic Accessory Design",
+      "year": "2025–2026",
+      "bullets": [
+        "Designed a height and tilt adjustable phone stand tailored to specific ergonomic requirements.",
+        "Refined through multiple digital and physical iterations, with the final design validated through daily use.",
+        "Designed a foldable, height-adjustable laptop stand around ergonomic and thermal constraints, pending physical validation."
+      ],
+      "link": null
+    },
+    {
+      "title": "Development of Refractory Bricks using Mining Waste",
+      "year": "2025",
+      "bullets": [
+        "Developed sustainable refractory brick compositions using mining waste for high-temperature engineering applications.",
+        "Designed and fabricated a custom thermal testing setup to evaluate heat resistance and material performance.",
+        "Worked on material selection, testing methodology, and practical feasibility for industrial use cases."
+      ],
+      "link": null
+    },
+    {
+      "title": "SAG Web Application Design",
+      "year": "2023–2024",
+      "bullets": [
+        "Led UI/UX design for a student activity web platform, applying user research and product-thinking to translate user needs into intuitive workflows and clean information architecture.",
+        "Developed design language, interface consistency standards, and user-flow logic across platform modules."
+      ],
+      "link": null
+    }
+  ],
+  "leadership": [
+    {
+      "title": "Founder & Captain — Tech Bizz Club",
+      "year": "2022–2025",
+      "bullets": [
+        "Co-founded a student technical club to promote hands-on engineering and problem-solving culture.",
+        "Worked on and mentored several student-led technical projects across mechanical, electronics, and software domains.",
+        "Organised innovation challenges, design competitions, technical workshops, and high-participation engineering events.",
+        "Led cross-functional student teams, coordinated club operations, and executed initiatives with minimal resources."
+      ],
+      "link": {
+        "href": "projects/project.html?id=tech-bizz-club",
+        "label": "Learn more about Tech Bizz Club →",
+        "external": false
+      }
+    }
+  ],
+  "education": [
+    {
+      "institution": "Indian Institute of Technology Delhi",
+      "degree": "M.Tech, Mechanical Design",
+      "period": "2025 — Ongoing",
+      "location": "New Delhi, India",
+      "logo": "assets/iitd-logo.png",
+      "logoAlt": "IIT Delhi logo"
+    },
+    {
+      "institution": "M.L.V. Textile & Engineering College",
+      "degree": "B.Tech, Mechanical Engineering",
+      "period": "2021 — 2025",
+      "location": "Bhilwara, Rajasthan",
+      "logo": "assets/mlvtec-logo.png",
+      "logoAlt": "MLVTEC logo"
+    }
+  ],
+  "contact": {
+    "intro": "I'm always up for interesting design problems, research collaborations, or just a good conversation about engineering.",
+    "links": [
+      {
+        "type": "email",
+        "href": "mailto:lakshay.agrwl@gmail.com",
+        "label": "lakshay.agrwl@gmail.com"
+      },
+      {
+        "type": "phone",
+        "href": "tel:+919783241801",
+        "label": "+91 97832 41801"
+      },
+      {
+        "type": "linkedin",
+        "href": "https://linkedin.com/in/lakshayagarwal490",
+        "label": "LinkedIn",
+        "external": true
+      },
+      {
+        "type": "github",
+        "href": "https://github.com/LakshayAga",
+        "label": "GitHub",
+        "external": true
+      }
+    ]
+  }
+}
