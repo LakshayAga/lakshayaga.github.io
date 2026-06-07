@@ -1937,6 +1937,10 @@
     };
 
     function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+    function altHref(link) {
+      if (!link || link.external) return link ? link.href : '';
+      return link.href.replace('projects/project.html', 'projects/alt_project.html');
+    }
 
     /* ── Main data loader ────────────────────────── */
     (async function init() {
@@ -2005,7 +2009,7 @@
           list.innerHTML = data.projects.map((p, i) => {
             const buls = p.bullets.map(b => `<li>${esc(b)}</li>`).join('');
             const lnk = p.link
-              ? `<a class="pe-link" href="${esc(p.link.href)}"${p.link.external ? ' target="_blank" rel="noopener"' : ''}>${esc(p.link.label)}</a>`
+              ? `<a class="pe-link" href="${esc(altHref(p.link))}"${p.link.external ? ' target="_blank" rel="noopener"' : ''}>${esc(p.link.label)}</a>`
               : '';
             const tag = PROJECT_TAGS[p.title] || '';
             return `
@@ -2032,7 +2036,7 @@
           list.innerHTML = data.leadership.map(entry => {
             const buls = entry.bullets.map(b => `<li>${esc(b)}</li>`).join('');
             const lnk = entry.link
-              ? `<a class="pe-link" href="${esc(entry.link.href)}"${entry.link.external ? ' target="_blank" rel="noopener"' : ''}>${esc(entry.link.label)}</a>`
+              ? `<a class="pe-link" href="${esc(altHref(entry.link))}"${entry.link.external ? ' target="_blank" rel="noopener"' : ''}>${esc(entry.link.label)}</a>`
               : '';
             return `
           <div class="sr">
