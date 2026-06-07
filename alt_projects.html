@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Projects by Lakshay Agarwal — Engineering, Product Design, Research, and UI/UX work." />
+  <title>Projects — Lakshay Agarwal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <style>
+    /* ─── TOKENS ───────────────────────────────────────── */
+    :root {
+      --Y: #d4a843;
+      --YD: #b8922e;
+      --YL: rgba(212, 168, 67, 0.12);
+      --B: #0a0a0a;
+      --S: #131313;
+      --S2: #1a1a1a;
+      --LN: #232323;
+      --T: #e4e0d8;
+      --T2: #a8a49c;
+      --T3: #6e6a64;
+
+      --disp: 'Bebas Neue', sans-serif;
+      --body: 'Space Grotesk', sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
+
+    /* ─── RESET ────────────────────────────────────────── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--B);
+      color: var(--T);
+      font-family: var(--body);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      cursor: none;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ─── CURSOR ───────────────────────────────────────── */
+    #cur-d {
+      position: fixed;
+      z-index: 9999;
+      pointer-events: none;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--Y);
+      transform: translate(-50%, -50%);
+    }
+
+    #cur-r {
+      position: fixed;
+      z-index: 9998;
+      pointer-events: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid var(--Y);
+      transform: translate(-50%, -50%);
+      transition: width .2s, height .2s;
+    }
+
+    .hover-cursor #cur-r {
+      width: 48px;
+      height: 48px;
+    }
+
+    /* ─── SCROLL PROGRESS ──────────────────────────────── */
+    #prog {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      height: 2px;
+      width: 0;
+      background: var(--Y);
+    }
+
+    /* ─── NAV ──────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 500;
+      height: 52px;
+      border-bottom: 1px solid var(--LN);
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: stretch;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      font-family: var(--disp);
+      font-size: 1.45rem;
+      letter-spacing: .06em;
+      color: var(--Y);
+      border-right: 1px solid var(--LN);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: stretch;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: .78rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--T3);
+      padding: 0 1.1rem;
+      border-left: 1px solid var(--LN);
+      display: flex;
+      align-items: center;
+      transition: color .15s, background .15s;
+    }
+
+    .nav-links a:hover {
+      color: var(--Y);
+      background: var(--S);
+    }
+
+    .nav-links a.nav-active {
+      color: var(--Y);
+    }
+
+    /* ─── PAGE HERO ────────────────────────────────────── */
+    .pg-hero {
+      padding: 7rem 4rem 4rem;
+      border-bottom: 1px solid var(--LN);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pg-hero-eyebrow {
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--Y);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .pg-hero-eyebrow::before {
+      content: '';
+      width: 14px;
+      height: 1px;
+      background: var(--Y);
+      display: block;
+    }
+
+    .pg-hero-title {
+      font-family: var(--disp);
+      font-size: clamp(5rem, 14vw, 13rem);
+      line-height: 0.87;
+      letter-spacing: -.005em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .pg-hero-title .solid {
+      color: var(--T);
+      display: block;
+      animation: slide-left .75s cubic-bezier(.77, 0, .175, 1) .05s both;
+    }
+
+    .pg-hero-title .stroke {
+      color: transparent;
+      -webkit-text-stroke: 2px var(--Y);
+      display: block;
+      padding-left: clamp(.5rem, 2vw, 3rem);
+      animation: slide-right .75s cubic-bezier(.77, 0, .175, 1) .15s both;
+    }
+
+    @keyframes slide-left {
+      from { transform: translateX(-3%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slide-right {
+      from { transform: translateX(3%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .pg-hero-rule {
+      height: 3px;
+      background: var(--Y);
+      transform-origin: left center;
+      animation: expand-x .65s cubic-bezier(.77, 0, .175, 1) .55s both;
+    }
+
+    @keyframes expand-x {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    .pg-hero-lede {
+      font-size: 1.1rem;
+      color: var(--T2);
+      line-height: 1.85;
+      max-width: 560px;
+      margin-top: 2rem;
+      border-left: 2px solid var(--Y);
+      padding-left: 1rem;
+      animation: fade-up .6s ease .75s both;
+    }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* ─── CATEGORY SECTIONS ─────────────────────────────── */
+    .cat-section {
+      border-bottom: 1px solid var(--LN);
+    }
+
+    .cat-header {
+      padding: 3rem 4rem 1.5rem;
+      border-bottom: 1px solid var(--LN);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .cat-label {
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--Y);
+      margin-bottom: .75rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .cat-label::before {
+      content: '';
+      width: 14px;
+      height: 1px;
+      background: var(--Y);
+      display: block;
+    }
+
+    .cat-title {
+      font-family: var(--disp);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 0.92;
+      text-transform: uppercase;
+      color: var(--T);
+      letter-spacing: .01em;
+    }
+
+    .cat-count {
+      font-family: var(--mono);
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--T3);
+    }
+
+    /* ─── CARD GRID ────────────────────────────────────── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+    }
+
+    /* ─── PROJECT CARDS — LANDSCAPE OVERLAY ─────────── */
+    .alt-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 320px;
+      background: var(--S);
+      border-right: 1px solid var(--LN);
+      border-bottom: 1px solid var(--LN);
+      padding: 2.5rem 3rem;
+      text-decoration: none;
+      color: inherit;
+      overflow: hidden;
+      cursor: none;
+      transition: background .35s;
+    }
+
+    /* Remove right border on even columns */
+    .alt-card:nth-child(2n) {
+      border-right: none;
+    }
+
+    /* Canvas layer for dot-grid spotlight */
+    .alt-card canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      border-radius: inherit;
+    }
+
+    .alt-card > *:not(canvas) {
+      position: relative;
+      z-index: 1;
+    }
+
+    .alt-card:hover {
+      background: var(--S2);
+    }
+
+    /* ── Watermark number — big background element ── */
+    .ac-num {
+      position: absolute;
+      top: 50%;
+      right: 2.5rem;
+      transform: translateY(-50%);
+      font-family: var(--disp);
+      font-size: clamp(8rem, 14vw, 12rem);
+      line-height: 1;
+      color: var(--LN);
+      letter-spacing: -.02em;
+      transition: color .4s, opacity .4s;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    .alt-card:hover .ac-num {
+      color: var(--Y);
+      opacity: 0.12;
+    }
+
+    /* ── Gold accent bar — top edge, scales in on hover ── */
+    .ac-tag {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--Y);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform .4s cubic-bezier(.4,0,.2,1);
+      z-index: 2;
+    }
+
+    .alt-card:hover .ac-tag {
+      transform: scaleX(1);
+    }
+
+    /* ── Title ── */
+    .ac-title {
+      font-family: var(--disp);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--T);
+      letter-spacing: .01em;
+      transition: color .3s;
+      max-width: 70%;
+    }
+
+    .alt-card:hover .ac-title {
+      color: var(--Y);
+    }
+
+    /* ── Summary — hidden by default, slides up on hover ── */
+    .ac-summary {
+      font-size: 0.88rem;
+      color: var(--T2);
+      line-height: 1.7;
+      margin-top: 0.75rem;
+      max-width: 70%;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transform: translateY(8px);
+      transition: opacity .3s ease .05s, transform .3s ease .05s, max-height .35s ease;
+    }
+
+    .alt-card:hover .ac-summary {
+      opacity: 1;
+      max-height: 80px;
+      transform: translateY(0);
+    }
+
+    /* ── Status pill — hidden until hover ── */
+    .ac-pill {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: .35rem 1rem;
+      border-radius: 2px;
+      font-family: var(--mono);
+      font-size: .68rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      white-space: nowrap;
+      background: var(--B);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .3s ease .1s, transform .3s ease .1s;
+    }
+
+    .alt-card:hover .ac-pill {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .ac-pill--complete {
+      color: #4ade80;
+      border: 1px solid #4ade80;
+    }
+
+    .ac-pill--progress {
+      color: #fbbf24;
+      border: 1px solid #fbbf24;
+    }
+
+    .ac-pill--design {
+      color: #9382ff;
+      border: 1px solid #9382ff;
+    }
+
+    /* ── Arrow — bottom right, appears on hover ── */
+    .ac-arrow {
+      position: absolute;
+      top: 2rem;
+      right: 2.5rem;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--LN);
+      border-radius: 2px;
+      color: var(--T3);
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity .3s ease .08s, transform .3s ease .08s, border-color .2s, color .2s;
+      z-index: 1;
+    }
+
+    .alt-card:hover .ac-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ─── SINGLE-ITEM ROW: full-width card ──────────── */
+    .card-grid--single {
+      grid-template-columns: 1fr;
+    }
+
+    .card-grid--single .alt-card {
+      border-right: none;
+      min-height: 280px;
+    }
+
+    .card-grid--single .ac-num {
+      font-size: clamp(10rem, 18vw, 16rem);
+    }
+
+    /* ─── ODD-ITEM ROW: last card spans full if odd ─── */
+    .card-grid--odd .alt-card:last-child {
+      grid-column: 1 / -1;
+      border-right: none;
+    }
+
+    /* ─── FOOTER ───────────────────────────────────────── */
+    footer {
+      background: var(--B);
+      border-top: 1px solid var(--LN);
+      padding: 1.5rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ft-copy {
+      font-family: var(--mono);
+      font-size: .78rem;
+      letter-spacing: .1em;
+      color: var(--T3);
+    }
+
+    .ft-switch {
+      font-family: var(--mono);
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--Y);
+      border: 1px solid rgba(212, 168, 67, .35);
+      padding: .4rem 1rem;
+      border-radius: 2px;
+      transition: background .18s, color .18s;
+    }
+
+    .ft-switch:hover {
+      background: var(--Y);
+      color: #1a1200;
+    }
+
+    /* ─── SCROLL REVEAL ────────────────────────────────── */
+    .sr {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .sr.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    .sr[d="1"] { transition-delay: .1s; }
+    .sr[d="2"] { transition-delay: .2s; }
+    .sr[d="3"] { transition-delay: .3s; }
+    .sr[d="4"] { transition-delay: .4s; }
+
+    /* ─── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 1000px) {
+      .pg-hero,
+      .cat-header,
+      footer {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+
+      .alt-card {
+        padding: 2rem 2rem;
+        min-height: 280px;
+      }
+
+      .ac-num {
+        font-size: clamp(6rem, 12vw, 9rem);
+        right: 1.5rem;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .alt-card {
+        border-right: none;
+      }
+
+      .pg-hero,
+      .cat-header,
+      footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .pg-hero {
+        padding-top: 5rem;
+        padding-bottom: 3rem;
+      }
+
+      .pg-hero-title {
+        font-size: clamp(3rem, 14vw, 5rem);
+      }
+
+      .alt-card {
+        min-height: 240px;
+        padding: 2rem 1.5rem;
+      }
+
+      .ac-num {
+        font-size: clamp(5rem, 20vw, 7rem);
+        right: 1rem;
+      }
+
+      .ac-title {
+        font-size: 1.6rem;
+        max-width: 80%;
+      }
+
+      .ac-arrow {
+        right: 1.5rem;
+        top: 1.5rem;
+      }
+    }
+
+    /* ─── TOUCH DEVICES: hide custom cursor ─────────── */
+    @media (hover: none) and (pointer: coarse) {
+      body { cursor: auto; }
+      #cur-d, #cur-r { display: none; }
+      a, button { cursor: auto; }
+      .alt-card { cursor: pointer; }
+
+      /* Show summary and pill on touch since no hover */
+      .ac-summary {
+        opacity: 1;
+        max-height: 80px;
+        transform: none;
+      }
+      .ac-pill {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="cur-d"></div>
+  <div id="cur-r"></div>
+  <div id="prog"></div>
+
+  <!-- ═══ NAV ═══════════════════════════════════════════ -->
+  <nav class="nav">
+    <a href="alt_index.html" class="nav-logo">LA.</a>
+    <div class="nav-links">
+      <a href="alt_index.html#about">About</a>
+      <a href="alt_index.html#skills">Skills</a>
+      <a href="alt_projects.html" class="nav-active">Projects</a>
+      <a href="alt_index.html#leadership">Leadership</a>
+      <a href="alt_index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ═══ PAGE HERO ════════════════════════════════════ -->
+  <section class="pg-hero">
+    <p class="pg-hero-eyebrow sr">Portfolio — All Work</p>
+    <h1 class="pg-hero-title">
+      <span class="solid">ALL</span>
+      <span class="stroke">PROJECTS.</span>
+    </h1>
+    <div class="pg-hero-rule"></div>
+    <p class="pg-hero-lede sr" d="1">A collection of engineering, design, and research work — from concept to prototype.</p>
+  </section>
+
+  <!-- ═══ ENGINEERING PROJECTS ═════════════════════════ -->
+  <section class="cat-section" id="engineering">
+    <div class="cat-header sr">
+      <div>
+        <p class="cat-label">01 — Category</p>
+        <h2 class="cat-title">Engineering Projects</h2>
+      </div>
+      <span class="cat-count">4 projects</span>
+    </div>
+    <div class="card-grid">
+
+      <a href="projects/alt_project.html?id=cannula-design" class="alt-card sr" id="alt-card-cannula">
+        <canvas></canvas>
+        <div class="ac-tag"></div>
+        <div class="ac-num">01</div>
+        <h3 class="ac-title">Design of Detachable Cannula</h3>
+        <p class="ac-summary">Detachable cannula system for improved clinical usability.</p>
+        <span class="ac-pill ac-pill--progress">In Progress</span>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </a>
+
+      <a href="projects/alt_project.html?id=four-bar-linkage" class="alt-card sr" d="1" id="alt-card-four-bar">
+        <canvas></canvas>
+        <div class="ac-tag"></div>
+        <div class="ac-num">02</div>
+        <h3 class="ac-title">Automated Four-Bar Linkage Design using Neural Networks</h3>
+        <p class="ac-summary">Predicts linkage dimensions from hand-drawn coupler paths using ML.</p>
+        <span class="ac-pill ac-pill--complete">Completed</span>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </a>
+
+      <a href="projects/alt_project.html?id=lower-limb-exo" class="alt-card sr" d="2" id="alt-card-lower-limb">
+        <canvas></canvas>
+        <div class="ac-tag"></div>
+        <div class="ac-num">03</div>
+        <h3 class="ac-title">Lower Limb Exoskeleton Design</h3>
+        <p class="ac-summary">Concept development and CAD validation for a lower-limb assistive device.</p>
+        <span class="ac-pill ac-pill--design">Design Phase</span>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </a>
+
+      <a href="projects/alt_project.html?id=spine-exo" class="alt-card sr" d="3" id="alt-card-spine-exo">
+        <canvas></canvas>
+        <div class="ac-tag"></div>
+        <div class="ac-num">04</div>
+        <h3 class="ac-title">Spine Exoskeleton Biomechanical Research</h3>
+        <p class="ac-summary">Spinal loading analysis and assistive device concept exploration.</p>
+        <span class="ac-pill ac-pill--complete">Completed</span>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ═══ PRODUCT DESIGN ══════════════════════════════ -->
+  <section class="cat-section" id="product-design">
+    <div class="cat-header sr">
+      <div>
+        <p class="cat-label">02 — Category</p>
+        <h2 class="cat-title">Product Design</h2>
+      </div>
+      <span class="cat-count">4 projects</span>
+    </div>
+    <div class="card-grid">
+
+      <a href="projects/phone-stand.html" class="alt-card sr" id="alt-card-phone-stand">
+        <canvas></canvas>
+        <div class="ac-tag"></div>
+        <div class="ac-num">01</div>
+        <h3 class="ac-title">Ergonomic Mobile Phone Stand</h3>
+        <p class="ac-summary">Adjustable phone stand designed for ergonomic use.</p>
+        <span class="ac-pill ac-pill--complete">Completed</span>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </a>
+
+      <a href="projects/alt_project.html?id=laptop-stand" class="alt-card sr" d="1" id="alt-card-laptop-stand">
+        <canvas></canvas>
+        <div class="ac-tag"></div>
+        <div class="ac-num">02</div>
+        <h3 class="ac-title">Foldable Ergonomic Laptop Stand</h3>
+        <p class="ac-summary">Balancing ergonomics, portability, and thermal performance.</p>
+        <span class="ac-pill ac-pill--design">Design Phase</span>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </a>
+
+      <a href="projects/alt_project.html?id=terrain-representation" class="alt-card sr" d="2" id="alt-card-terrain">
+        <canvas></canvas>
+        <div class="ac-tag"></div>
+        <div class="ac-num">03</div>
+        <h3 class="ac-title">Terrain Representation Project</h3>
+        <p class="ac-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <span class="ac-pill ac-pill--complete">Completed</span>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </a>
+
+      <a href="projects/alt_project.html?id=custom-vernier" class="alt-card sr" d="3" id="alt-card-vernier">
+        <canvas></canvas>
+        <div class="ac-tag"></div>
+        <div class="ac-num">04</div>
+        <h3 class="ac-title">Custom Vernier Caliper Design</h3>
+        <p class="ac-summary">Bespoke vernier caliper designed to custom specifications.</p>
+        <span class="ac-pill ac-pill--complete">Completed</span>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ═══ RESEARCH ════════════════════════════════════ -->
+  <section class="cat-section" id="research">
+    <div class="cat-header sr">
+      <div>
+        <p class="cat-label">03 — Category</p>
+        <h2 class="cat-title">Research</h2>
+      </div>
+      <span class="cat-count">1 project</span>
+    </div>
+    <div class="card-grid card-grid--single">
+
+      <a href="projects/alt_project.html?id=refractory-bricks" class="alt-card sr" id="alt-card-refractory">
+        <canvas></canvas>
+        <div class="ac-tag"></div>
+        <div class="ac-num">01</div>
+        <h3 class="ac-title">Development of Refractory Bricks using Mining Waste</h3>
+        <p class="ac-summary">Sustainable brick compositions with custom thermal testing.</p>
+        <span class="ac-pill ac-pill--complete">Completed</span>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ═══ GRAPHIC & UI DESIGN ═════════════════════════ -->
+  <section class="cat-section" id="ui-design">
+    <div class="cat-header sr">
+      <div>
+        <p class="cat-label">04 — Category</p>
+        <h2 class="cat-title">Graphic &amp; UI Design</h2>
+      </div>
+      <span class="cat-count">3 projects</span>
+    </div>
+    <div class="card-grid card-grid--odd">
+
+      <a href="projects/alt_project.html?id=sag-web-app" class="alt-card sr" id="alt-card-sag">
+        <canvas></canvas>
+        <div class="ac-tag"></div>
+        <div class="ac-num">01</div>
+        <h3 class="ac-title">SAG Web Application Design</h3>
+        <p class="ac-summary">UI/UX design and design language for a student activity platform.</p>
+        <span class="ac-pill ac-pill--complete">Completed</span>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </a>
+
+      <a href="projects/alt_project.html?id=createx-2024" class="alt-card sr" d="1" id="alt-card-createx">
+        <canvas></canvas>
+        <div class="ac-tag"></div>
+        <div class="ac-num">02</div>
+        <h3 class="ac-title">CreateX 2024 — Event Website</h3>
+        <p class="ac-summary">Website design for a design challenge and exhibition event by Tech Bizz Club.</p>
+        <span class="ac-pill ac-pill--complete">Completed</span>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </a>
+
+      <a href="projects/alt_project.html?id=openhack-2024" class="alt-card sr" d="2" id="alt-card-openhack">
+        <canvas></canvas>
+        <div class="ac-tag"></div>
+        <div class="ac-num">03</div>
+        <h3 class="ac-title">OpenHack 2024 — Event Website</h3>
+        <p class="ac-summary">Website design for an open-source hackathon organised by Tech Bizz Club.</p>
+        <span class="ac-pill ac-pill--complete">Completed</span>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══════════════════════════════════════ -->
+  <footer>
+    <span class="ft-copy">© <span id="f-year"></span> Lakshay Agarwal — All rights reserved</span>
+    <a href="projects.html" class="ft-switch">← Classic View</a>
+  </footer>
+
+  <!-- ═══ SCRIPTS ═══════════════════════════════════════ -->
+  <script>
+    /* ── Year ───────────────────────────────────────── */
+    document.getElementById('f-year').textContent = new Date().getFullYear();
+
+    /* ── Custom Cursor ─────────────────────────────── */
+    const cd = document.getElementById('cur-d');
+    const cr = document.getElementById('cur-r');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function cursorLoop() {
+      rx += (mx - rx) * .1; ry += (my - ry) * .1;
+      cd.style.cssText = `left:${mx}px;top:${my}px`;
+      cr.style.cssText = `left:${rx}px;top:${ry}px`;
+      requestAnimationFrame(cursorLoop);
+    })();
+    document.querySelectorAll('a,button').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('hover-cursor'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('hover-cursor'));
+    });
+
+    /* ── Scroll progress ─────────────────────────────── */
+    const pg = document.getElementById('prog');
+    window.addEventListener('scroll', () => {
+      pg.style.width = (window.scrollY / (document.body.scrollHeight - innerHeight) * 100) + '%';
+    }, { passive: true });
+
+    /* ── Scroll reveal ───────────────────────────────── */
+    const sio = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); sio.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.sr').forEach(el => sio.observe(el));
+
+    /* ══════════════════════════════════════════════════
+       DOT-GRID SPOTLIGHT EFFECT
+       Each .alt-card has a <canvas> that renders a dot
+       grid. On hover, dots near the cursor grow larger
+       and glow gold; dots further away remain small and
+       dim — creating a living spotlight.
+    ══════════════════════════════════════════════════ */
+    (function initDotGrids() {
+      const GRID = 32;           // px between dot centres
+      const DOT_MIN = 1;         // base dot radius
+      const DOT_MAX = 4.5;       // max radius at cursor
+      const INFLUENCE = 180;     // spotlight radius in px
+      const COLOR_DIM = 'rgba(212,168,67,0.08)';   // far dots
+      const COLOR_MID = 'rgba(212,168,67,0.25)';   // mid dots
+      const COLOR_HOT = 'rgba(212,168,67,0.55)';   // near dots
+
+      const cards = document.querySelectorAll('.alt-card');
+      const DPR = window.devicePixelRatio || 1;
+
+      cards.forEach(card => {
+        const cvs = card.querySelector('canvas');
+        if (!cvs) return;
+        const ctx = cvs.getContext('2d');
+
+        let w = 0, h = 0;
+        let mouseX = -9999, mouseY = -9999;
+        let hovering = false;
+        let rafId = null;
+
+        function resize() {
+          const rect = card.getBoundingClientRect();
+          w = rect.width;
+          h = rect.height;
+          cvs.width = w * DPR;
+          cvs.height = h * DPR;
+          cvs.style.width = w + 'px';
+          cvs.style.height = h + 'px';
+          ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+          drawFrame();
+        }
+
+        function drawFrame() {
+          ctx.clearRect(0, 0, w, h);
+
+          const cols = Math.ceil(w / GRID) + 1;
+          const rows = Math.ceil(h / GRID) + 1;
+          // Offset so dots are centred within the card
+          const ox = (w - (cols - 1) * GRID) / 2;
+          const oy = (h - (rows - 1) * GRID) / 2;
+
+          for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+              const x = ox + c * GRID;
+              const y = oy + r * GRID;
+
+              let radius = DOT_MIN;
+              let color = COLOR_DIM;
+
+              if (hovering) {
+                const dx = x - mouseX;
+                const dy = y - mouseY;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const t = Math.max(0, 1 - dist / INFLUENCE);
+                // Ease-out curve for smoother falloff
+                const eased = t * t * (3 - 2 * t);
+                radius = DOT_MIN + (DOT_MAX - DOT_MIN) * eased;
+
+                if (t > 0.6) color = COLOR_HOT;
+                else if (t > 0.2) color = COLOR_MID;
+                else color = COLOR_DIM;
+              }
+
+              ctx.beginPath();
+              ctx.arc(x, y, radius, 0, Math.PI * 2);
+              ctx.fillStyle = color;
+              ctx.fill();
+            }
+          }
+        }
+
+        function animate() {
+          drawFrame();
+          if (hovering) rafId = requestAnimationFrame(animate);
+        }
+
+        card.addEventListener('mouseenter', () => {
+          hovering = true;
+          animate();
+        });
+
+        card.addEventListener('mouseleave', () => {
+          hovering = false;
+          mouseX = -9999;
+          mouseY = -9999;
+          if (rafId) cancelAnimationFrame(rafId);
+          drawFrame(); // reset to dim dots
+        });
+
+        card.addEventListener('mousemove', e => {
+          const rect = card.getBoundingClientRect();
+          mouseX = e.clientX - rect.left;
+          mouseY = e.clientY - rect.top;
+        });
+
+        // Initial draw and resize handling
+        resize();
+        const ro = new ResizeObserver(() => resize());
+        ro.observe(card);
+      });
+    })();
+  </script>
+</body>
+
+</html>

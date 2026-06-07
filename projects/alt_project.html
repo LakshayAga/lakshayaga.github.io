@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Project detail — Coming soon — Lakshay Agarwal" />
+  <title>Coming Soon — Lakshay Agarwal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <style>
+    /* ─── TOKENS ───────────────────────────────────────── */
+    :root {
+      --Y: #d4a843;
+      --YD: #b8922e;
+      --B: #0a0a0a;
+      --S: #131313;
+      --S2: #1a1a1a;
+      --LN: #232323;
+      --T: #e4e0d8;
+      --T2: #a8a49c;
+      --T3: #6e6a64;
+
+      --disp: 'Bebas Neue', sans-serif;
+      --body: 'Space Grotesk', sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
+
+    /* ─── RESET ────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--B);
+      color: var(--T);
+      font-family: var(--body);
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+      cursor: none;
+      line-height: 1.6;
+      height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── CURSOR ───────────────────────────────────────── */
+    #cur-d {
+      position: fixed; z-index: 9999; pointer-events: none;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--Y); transform: translate(-50%, -50%);
+    }
+    #cur-r {
+      position: fixed; z-index: 9998; pointer-events: none;
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 1.5px solid var(--Y); transform: translate(-50%, -50%);
+      transition: width .2s, height .2s;
+    }
+    .hover-cursor #cur-r { width: 48px; height: 48px; }
+
+    /* ─── NAV ──────────────────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      height: 52px; border-bottom: 1px solid var(--LN);
+      background: rgba(10, 10, 10, 0.92); backdrop-filter: blur(12px);
+      display: flex; align-items: stretch;
+    }
+    .nav-logo {
+      display: flex; align-items: center; padding: 0 1.5rem;
+      font-family: var(--disp); font-size: 1.45rem;
+      letter-spacing: .06em; color: var(--Y); border-right: 1px solid var(--LN);
+    }
+    .nav-links { display: flex; align-items: stretch; margin-left: auto; }
+    .nav-links a {
+      font-family: var(--mono); font-size: .78rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--T3); padding: 0 1.1rem;
+      border-left: 1px solid var(--LN); display: flex; align-items: center;
+      transition: color .15s, background .15s;
+    }
+    .nav-links a:hover { color: var(--Y); background: var(--S); }
+
+    /* ─── FULLSCREEN CANVAS ────────────────────────────── */
+    #grid-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ─── MAIN LAYOUT ─────────────────────────────────── */
+    .page {
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-top: 52px;
+    }
+
+    /* ── Back link ── */
+    .back-bar {
+      display: flex;
+      align-items: center;
+      padding: 1.25rem 4rem;
+      border-bottom: 1px solid var(--LN);
+      flex-shrink: 0;
+    }
+
+    .back-link {
+      font-family: var(--mono);
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--T3);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      transition: color .2s;
+      cursor: none;
+    }
+    .back-link:hover { color: var(--Y); }
+    .back-link svg { transition: transform .2s; }
+    .back-link:hover svg { transform: translateX(-3px); }
+
+    /* ── Center content ── */
+    .center {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 2rem;
+    }
+
+    /* Giant "COMING SOON" text */
+    .cs-title {
+      font-family: var(--disp);
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 0.85;
+      letter-spacing: -.02em;
+      position: relative;
+    }
+
+    .cs-line {
+      display: block;
+      font-size: clamp(5rem, 16vw, 16rem);
+    }
+
+    .cs-line-1 {
+      color: var(--T);
+      animation: cs-slide-left .8s cubic-bezier(.77,0,.175,1) .1s both;
+    }
+
+    .cs-line-2 {
+      color: transparent;
+      -webkit-text-stroke: 2px var(--Y);
+      padding-left: clamp(1rem, 3vw, 5rem);
+      animation: cs-slide-right .8s cubic-bezier(.77,0,.175,1) .2s both;
+    }
+
+    @keyframes cs-slide-left {
+      from { transform: translateX(-5%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes cs-slide-right {
+      from { transform: translateX(5%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Gold rule under title */
+    .cs-rule {
+      width: min(500px, 70vw);
+      height: 3px;
+      background: var(--Y);
+      margin: 2rem auto;
+      transform-origin: center;
+      animation: cs-expand .6s cubic-bezier(.77,0,.175,1) .6s both;
+    }
+
+    @keyframes cs-expand {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    /* Subtitle */
+    .cs-sub {
+      font-size: 1.1rem;
+      color: var(--T2);
+      line-height: 1.8;
+      max-width: 480px;
+      text-align: center;
+      animation: cs-fade-up .6s ease .8s both;
+    }
+
+    @keyframes cs-fade-up {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* Project ID badge */
+    .cs-id {
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--Y);
+      background: rgba(212, 168, 67, 0.08);
+      border: 1px solid rgba(212, 168, 67, 0.2);
+      padding: .45rem 1.2rem;
+      border-radius: 2px;
+      margin-bottom: 2rem;
+      animation: cs-fade-up .5s ease .4s both;
+    }
+
+    /* CTA buttons */
+    .cs-btns {
+      display: flex;
+      gap: .75rem;
+      margin-top: 2.5rem;
+      animation: cs-fade-up .5s ease 1s both;
+    }
+
+    .btn {
+      font-family: var(--mono);
+      font-size: .78rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: .85rem 1.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      border-radius: 2px;
+      transition: .18s;
+      cursor: none;
+      border: none;
+    }
+
+    .btn-gold {
+      background: var(--Y);
+      color: #1a1200;
+      outline: 2px solid var(--Y);
+      outline-offset: 0;
+    }
+    .btn-gold:hover {
+      outline-offset: 5px;
+      background: var(--YD);
+    }
+
+    .btn-out {
+      background: transparent;
+      color: var(--T2);
+      border: 1px solid var(--LN);
+    }
+    .btn-out:hover {
+      border-color: var(--Y);
+      color: var(--Y);
+    }
+
+    /* ── Animated construction bars ── */
+    .construct-bars {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      display: flex;
+      gap: 0;
+      overflow: hidden;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    .cb {
+      flex: 1;
+      background: var(--Y);
+      transform-origin: bottom center;
+      animation: cb-grow 1.5s cubic-bezier(.4,0,.2,1) both;
+    }
+
+    .cb:nth-child(odd) { opacity: 0.7; }
+    .cb:nth-child(1) { animation-delay: .2s; }
+    .cb:nth-child(2) { animation-delay: .35s; }
+    .cb:nth-child(3) { animation-delay: .15s; }
+    .cb:nth-child(4) { animation-delay: .45s; }
+    .cb:nth-child(5) { animation-delay: .1s; }
+    .cb:nth-child(6) { animation-delay: .5s; }
+    .cb:nth-child(7) { animation-delay: .25s; }
+    .cb:nth-child(8) { animation-delay: .4s; }
+    .cb:nth-child(9) { animation-delay: .3s; }
+    .cb:nth-child(10) { animation-delay: .55s; }
+    .cb:nth-child(11) { animation-delay: .18s; }
+    .cb:nth-child(12) { animation-delay: .42s; }
+
+    @keyframes cb-grow {
+      from { transform: scaleY(0); }
+      to { transform: scaleY(1); }
+    }
+
+    /* ── Floating glyphs ── */
+    .glyph {
+      position: absolute;
+      font-family: var(--disp);
+      color: var(--Y);
+      opacity: 0.04;
+      pointer-events: none;
+      user-select: none;
+      animation: glyph-float 8s ease-in-out infinite;
+    }
+
+    .glyph-1 { font-size: 14rem; top: 10%; left: 5%; animation-delay: 0s; }
+    .glyph-2 { font-size: 10rem; top: 60%; right: 8%; animation-delay: 2s; }
+    .glyph-3 { font-size: 8rem; bottom: 15%; left: 12%; animation-delay: 4s; }
+    .glyph-4 { font-size: 12rem; top: 5%; right: 15%; animation-delay: 1s; }
+
+    @keyframes glyph-float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(2deg); }
+    }
+
+    /* ── Corner decorations ── */
+    .corner-deco {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border: 1px solid var(--Y);
+      opacity: 0.08;
+      pointer-events: none;
+    }
+    .corner-deco.tl { top: 2rem; left: 2rem; border-right: none; border-bottom: none; }
+    .corner-deco.tr { top: 2rem; right: 2rem; border-left: none; border-bottom: none; }
+    .corner-deco.bl { bottom: 2rem; left: 2rem; border-right: none; border-top: none; }
+    .corner-deco.br { bottom: 2rem; right: 2rem; border-left: none; border-top: none; }
+
+    /* ─── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .back-bar { padding: 1rem 1.5rem; }
+
+      .cs-line { font-size: clamp(3.5rem, 14vw, 6rem); }
+
+      .cs-btns { flex-direction: column; width: 100%; max-width: 280px; }
+      .btn { justify-content: center; }
+
+      .glyph { display: none; }
+      .corner-deco { width: 30px; height: 30px; }
+    }
+
+    /* ─── TOUCH DEVICES ────────────────────────────────── */
+    @media (hover: none) and (pointer: coarse) {
+      body { cursor: auto; }
+      #cur-d, #cur-r { display: none; }
+      a, button, .btn { cursor: pointer; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="cur-d"></div>
+  <div id="cur-r"></div>
+
+  <!-- Full-screen dot grid -->
+  <canvas id="grid-canvas"></canvas>
+
+  <!-- ═══ NAV ═══════════════════════════════════════════ -->
+  <nav class="nav">
+    <a href="../alt_index.html" class="nav-logo">LA.</a>
+    <div class="nav-links">
+      <a href="../alt_index.html#about">About</a>
+      <a href="../alt_index.html#skills">Skills</a>
+      <a href="../alt_projects.html">Projects</a>
+      <a href="../alt_index.html#leadership">Leadership</a>
+      <a href="../alt_index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ═══ PAGE ═════════════════════════════════════════ -->
+  <div class="page">
+
+    <div class="back-bar">
+      <a href="../alt_projects.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        Back to projects
+      </a>
+    </div>
+
+    <div class="center">
+      <!-- Floating decorative glyphs -->
+      <span class="glyph glyph-1">⬡</span>
+      <span class="glyph glyph-2">△</span>
+      <span class="glyph glyph-3">◇</span>
+      <span class="glyph glyph-4">○</span>
+
+      <!-- Corner frames -->
+      <div class="corner-deco tl"></div>
+      <div class="corner-deco tr"></div>
+      <div class="corner-deco bl"></div>
+      <div class="corner-deco br"></div>
+
+      <!-- Project ID badge -->
+      <div class="cs-id" id="project-id">Project</div>
+
+      <!-- Giant title -->
+      <h1 class="cs-title">
+        <span class="cs-line cs-line-1">COMING</span>
+        <span class="cs-line cs-line-2">SOON.</span>
+      </h1>
+
+      <div class="cs-rule"></div>
+
+      <p class="cs-sub">This project's detailed page is under construction. Check back soon for in-depth documentation, renders, 3D models, and design process breakdowns.</p>
+
+      <div class="cs-btns">
+        <a href="../alt_projects.html" class="btn btn-gold">Browse Projects</a>
+        <a href="../alt_index.html#contact" class="btn btn-out">Get in Touch</a>
+      </div>
+
+      <!-- Bottom construction bars -->
+      <div class="construct-bars">
+        <div class="cb"></div><div class="cb"></div><div class="cb"></div>
+        <div class="cb"></div><div class="cb"></div><div class="cb"></div>
+        <div class="cb"></div><div class="cb"></div><div class="cb"></div>
+        <div class="cb"></div><div class="cb"></div><div class="cb"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ SCRIPTS ═══════════════════════════════════════ -->
+  <script>
+    /* ── Extract project ID from URL ─────────────────── */
+    const params = new URLSearchParams(window.location.search);
+    const pid = params.get('id');
+    if (pid) {
+      const label = pid.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      document.getElementById('project-id').textContent = '// ' + label;
+      document.title = label + ' — Coming Soon — Lakshay Agarwal';
+    }
+
+    /* ── Custom Cursor ─────────────────────────────── */
+    const cd = document.getElementById('cur-d');
+    const cr = document.getElementById('cur-r');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function cursorLoop() {
+      rx += (mx - rx) * .1; ry += (my - ry) * .1;
+      cd.style.cssText = `left:${mx}px;top:${my}px`;
+      cr.style.cssText = `left:${rx}px;top:${ry}px`;
+      requestAnimationFrame(cursorLoop);
+    })();
+    document.querySelectorAll('a,button,.btn').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('hover-cursor'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('hover-cursor'));
+    });
+
+    /* ══════════════════════════════════════════════════
+       FULL-SCREEN DOT-GRID WITH CURSOR SPOTLIGHT
+    ══════════════════════════════════════════════════ */
+    (function initFullGrid() {
+      const cvs = document.getElementById('grid-canvas');
+      const ctx = cvs.getContext('2d');
+      const DPR = window.devicePixelRatio || 1;
+
+      const GRID = 36;
+      const DOT_MIN = 0.8;
+      const DOT_MAX = 4;
+      const INFLUENCE = 200;
+      const COLOR_DIM = 'rgba(212,168,67,0.06)';
+      const COLOR_MID = 'rgba(212,168,67,0.18)';
+      const COLOR_HOT = 'rgba(212,168,67,0.4)';
+
+      let w = 0, h = 0;
+      let curX = -9999, curY = -9999;
+
+      function resize() {
+        w = window.innerWidth;
+        h = window.innerHeight;
+        cvs.width = w * DPR;
+        cvs.height = h * DPR;
+        cvs.style.width = w + 'px';
+        cvs.style.height = h + 'px';
+        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+
+        const cols = Math.ceil(w / GRID) + 1;
+        const rows = Math.ceil(h / GRID) + 1;
+        const ox = (w - (cols - 1) * GRID) / 2;
+        const oy = (h - (rows - 1) * GRID) / 2;
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const x = ox + c * GRID;
+            const y = oy + r * GRID;
+
+            const dx = x - curX;
+            const dy = y - curY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const t = Math.max(0, 1 - dist / INFLUENCE);
+            const eased = t * t * (3 - 2 * t);
+            const radius = DOT_MIN + (DOT_MAX - DOT_MIN) * eased;
+
+            let color = COLOR_DIM;
+            if (t > 0.6) color = COLOR_HOT;
+            else if (t > 0.2) color = COLOR_MID;
+
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+          }
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      document.addEventListener('mousemove', e => {
+        curX = e.clientX;
+        curY = e.clientY;
+      });
+
+      window.addEventListener('resize', resize);
+      resize();
+      draw();
+    })();
+  </script>
+</body>
+
+</html>
