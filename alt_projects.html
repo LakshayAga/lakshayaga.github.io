@@ -206,13 +206,27 @@
     }
 
     @keyframes slide-left {
-      from { transform: translateX(-3%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
+      from {
+        transform: translateX(-3%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
 
     @keyframes slide-right {
-      from { transform: translateX(3%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
+      from {
+        transform: translateX(3%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
 
     .pg-hero-rule {
@@ -223,8 +237,13 @@
     }
 
     @keyframes expand-x {
-      from { transform: scaleX(0); }
-      to { transform: scaleX(1); }
+      from {
+        transform: scaleX(0);
+      }
+
+      to {
+        transform: scaleX(1);
+      }
     }
 
     .pg-hero-lede {
@@ -239,8 +258,15 @@
     }
 
     @keyframes fade-up {
-      from { opacity: 0; transform: translateY(14px); }
-      to { opacity: 1; transform: none; }
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     /* ─── CATEGORY SECTIONS ─────────────────────────────── */
@@ -334,7 +360,7 @@
       border-radius: inherit;
     }
 
-    .alt-card > *:not(canvas) {
+    .alt-card>*:not(canvas) {
       position: relative;
       z-index: 1;
     }
@@ -375,7 +401,7 @@
       background: var(--Y);
       transform: scaleX(0);
       transform-origin: left center;
-      transition: transform .4s cubic-bezier(.4,0,.2,1);
+      transition: transform .4s cubic-bezier(.4, 0, .2, 1);
       z-index: 2;
     }
 
@@ -547,13 +573,25 @@
       transform: none;
     }
 
-    .sr[d="1"] { transition-delay: .1s; }
-    .sr[d="2"] { transition-delay: .2s; }
-    .sr[d="3"] { transition-delay: .3s; }
-    .sr[d="4"] { transition-delay: .4s; }
+    .sr[d="1"] {
+      transition-delay: .1s;
+    }
+
+    .sr[d="2"] {
+      transition-delay: .2s;
+    }
+
+    .sr[d="3"] {
+      transition-delay: .3s;
+    }
+
+    .sr[d="4"] {
+      transition-delay: .4s;
+    }
 
     /* ─── RESPONSIVE ───────────────────────────────────── */
     @media (max-width: 1000px) {
+
       .pg-hero,
       .cat-header,
       footer {
@@ -573,7 +611,9 @@
     }
 
     @media (max-width: 700px) {
-      .nav-links { display: none; }
+      .nav-links {
+        display: none;
+      }
 
       .card-grid {
         grid-template-columns: 1fr;
@@ -622,10 +662,23 @@
 
     /* ─── TOUCH DEVICES: hide custom cursor ─────────── */
     @media (hover: none) and (pointer: coarse) {
-      body { cursor: auto; }
-      #cur-d, #cur-r { display: none; }
-      a, button { cursor: auto; }
-      .alt-card { cursor: pointer; }
+      body {
+        cursor: auto;
+      }
+
+      #cur-d,
+      #cur-r {
+        display: none;
+      }
+
+      a,
+      button {
+        cursor: auto;
+      }
+
+      .alt-card {
+        cursor: pointer;
+      }
 
       /* Show summary and pill on touch since no hover */
       .ac-summary {
@@ -633,6 +686,7 @@
         max-height: 80px;
         transform: none;
       }
+
       .ac-pill {
         opacity: 1;
         transform: none;
@@ -667,7 +721,8 @@
       <span class="stroke">PROJECTS.</span>
     </h1>
     <div class="pg-hero-rule"></div>
-    <p class="pg-hero-lede sr" d="1">A collection of engineering, design, and research work — from concept to prototype.</p>
+    <p class="pg-hero-lede sr" d="1">A collection of engineering, design, and research work — from concept to prototype.
+    </p>
   </section>
 
   <!-- ═══ ENGINEERING PROJECTS ═════════════════════════ -->
@@ -687,8 +742,12 @@
         <div class="ac-num">01</div>
         <h3 class="ac-title">Design of Detachable Cannula</h3>
         <p class="ac-summary">Detachable cannula system for improved clinical usability.</p>
-        <span class="ac-pill ac-pill--progress">In Progress</span>
-        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        <span class="ac-pill ac-pill--progress">Ongoing</span>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg></div>
       </a>
 
       <a href="projects/alt_project.html?id=four-bar-linkage" class="alt-card sr" d="1" id="alt-card-four-bar">
@@ -698,7 +757,11 @@
         <h3 class="ac-title">Automated Four-Bar Linkage Design using Neural Networks</h3>
         <p class="ac-summary">Predicts linkage dimensions from hand-drawn coupler paths using ML.</p>
         <span class="ac-pill ac-pill--complete">Completed</span>
-        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg></div>
       </a>
 
       <a href="projects/alt_project.html?id=lower-limb-exo" class="alt-card sr" d="2" id="alt-card-lower-limb">
@@ -708,7 +771,11 @@
         <h3 class="ac-title">Lower Limb Exoskeleton Design</h3>
         <p class="ac-summary">Concept development and CAD validation for a lower-limb assistive device.</p>
         <span class="ac-pill ac-pill--design">Design Phase</span>
-        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg></div>
       </a>
 
       <a href="projects/alt_project.html?id=spine-exo" class="alt-card sr" d="3" id="alt-card-spine-exo">
@@ -718,7 +785,11 @@
         <h3 class="ac-title">Spine Exoskeleton Biomechanical Research</h3>
         <p class="ac-summary">Spinal loading analysis and assistive device concept exploration.</p>
         <span class="ac-pill ac-pill--complete">Completed</span>
-        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg></div>
       </a>
 
     </div>
@@ -742,7 +813,11 @@
         <h3 class="ac-title">Ergonomic Mobile Phone Stand</h3>
         <p class="ac-summary">Adjustable phone stand designed for ergonomic use.</p>
         <span class="ac-pill ac-pill--complete">Completed</span>
-        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg></div>
       </a>
 
       <a href="projects/alt_project.html?id=laptop-stand" class="alt-card sr" d="1" id="alt-card-laptop-stand">
@@ -752,7 +827,11 @@
         <h3 class="ac-title">Foldable Ergonomic Laptop Stand</h3>
         <p class="ac-summary">Balancing ergonomics, portability, and thermal performance.</p>
         <span class="ac-pill ac-pill--design">Design Phase</span>
-        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg></div>
       </a>
 
       <a href="projects/alt_project.html?id=terrain-representation" class="alt-card sr" d="2" id="alt-card-terrain">
@@ -762,7 +841,11 @@
         <h3 class="ac-title">Terrain Representation Project</h3>
         <p class="ac-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         <span class="ac-pill ac-pill--complete">Completed</span>
-        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg></div>
       </a>
 
       <a href="projects/alt_project.html?id=custom-vernier" class="alt-card sr" d="3" id="alt-card-vernier">
@@ -772,7 +855,11 @@
         <h3 class="ac-title">Custom Vernier Caliper Design</h3>
         <p class="ac-summary">Bespoke vernier caliper designed to custom specifications.</p>
         <span class="ac-pill ac-pill--complete">Completed</span>
-        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg></div>
       </a>
 
     </div>
@@ -796,7 +883,11 @@
         <h3 class="ac-title">Development of Refractory Bricks using Mining Waste</h3>
         <p class="ac-summary">Sustainable brick compositions with custom thermal testing.</p>
         <span class="ac-pill ac-pill--complete">Completed</span>
-        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg></div>
       </a>
 
     </div>
@@ -820,7 +911,11 @@
         <h3 class="ac-title">SAG Web Application Design</h3>
         <p class="ac-summary">UI/UX design and design language for a student activity platform.</p>
         <span class="ac-pill ac-pill--complete">Completed</span>
-        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg></div>
       </a>
 
       <a href="projects/alt_project.html?id=createx-2024" class="alt-card sr" d="1" id="alt-card-createx">
@@ -830,7 +925,11 @@
         <h3 class="ac-title">CreateX 2024 — Event Website</h3>
         <p class="ac-summary">Website design for a design challenge and exhibition event by Tech Bizz Club.</p>
         <span class="ac-pill ac-pill--complete">Completed</span>
-        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg></div>
       </a>
 
       <a href="projects/alt_project.html?id=openhack-2024" class="alt-card sr" d="2" id="alt-card-openhack">
@@ -840,7 +939,11 @@
         <h3 class="ac-title">OpenHack 2024 — Event Website</h3>
         <p class="ac-summary">Website design for an open-source hackathon organised by Tech Bizz Club.</p>
         <span class="ac-pill ac-pill--complete">Completed</span>
-        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+        <div class="ac-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg></div>
       </a>
 
     </div>
